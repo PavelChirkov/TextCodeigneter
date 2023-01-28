@@ -1,0 +1,95 @@
+CRITICAL - 2023-01-28 18:52:14 --> The framework needs the following extension(s) installed and loaded: intl.
+in SYSTEMPATH\CodeIgniter.php on line 226.
+ 1 SYSTEMPATH\CodeIgniter.php(226): CodeIgniter\Exceptions\FrameworkException::forMissingExtension()
+ 2 SYSTEMPATH\CodeIgniter.php(190): CodeIgniter\CodeIgniter->resolvePlatformExtensions()
+ 3 FCPATH\index.php(57): CodeIgniter\CodeIgniter->initialize()
+ERROR - 2023-01-28 16:01:23 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in D:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 D:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php(174): mysqli->real_connect()
+#1 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(1408): CodeIgniter\Database\BaseConnection->query()
+#4 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(1427): CodeIgniter\Database\BaseConnection->listTables()
+#5 D:\OSPanel\domains\TextCodeigneter\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists()
+#6 D:\OSPanel\domains\TextCodeigneter\system\Database\MigrationRunner.php(168): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 D:\OSPanel\domains\TextCodeigneter\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest()
+#8 D:\OSPanel\domains\TextCodeigneter\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run()
+#9 D:\OSPanel\domains\TextCodeigneter\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run()
+#10 D:\OSPanel\domains\TextCodeigneter\spark(97): CodeIgniter\CLI\Console->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: NO) in D:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(1408): CodeIgniter\Database\BaseConnection->query()
+#3 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(1427): CodeIgniter\Database\BaseConnection->listTables()
+#4 D:\OSPanel\domains\TextCodeigneter\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists()
+#5 D:\OSPanel\domains\TextCodeigneter\system\Database\MigrationRunner.php(168): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 D:\OSPanel\domains\TextCodeigneter\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest()
+#7 D:\OSPanel\domains\TextCodeigneter\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run()
+#8 D:\OSPanel\domains\TextCodeigneter\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run()
+#9 D:\OSPanel\domains\TextCodeigneter\spark(97): CodeIgniter\CLI\Console->run()
+#10 {main}
+ERROR - 2023-01-28 16:02:05 --> Error connecting to the database: mysqli_sql_exception: Access denied for user ''@'localhost' (using password: NO) in D:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 D:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php(174): mysqli->real_connect()
+#1 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+#3 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(1408): CodeIgniter\Database\BaseConnection->query()
+#4 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(1427): CodeIgniter\Database\BaseConnection->listTables()
+#5 D:\OSPanel\domains\TextCodeigneter\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists()
+#6 D:\OSPanel\domains\TextCodeigneter\system\Database\MigrationRunner.php(168): CodeIgniter\Database\MigrationRunner->ensureTable()
+#7 D:\OSPanel\domains\TextCodeigneter\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest()
+#8 D:\OSPanel\domains\TextCodeigneter\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run()
+#9 D:\OSPanel\domains\TextCodeigneter\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run()
+#10 D:\OSPanel\domains\TextCodeigneter\spark(97): CodeIgniter\CLI\Console->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Access denied for user ''@'localhost' (using password: NO) in D:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(573): CodeIgniter\Database\BaseConnection->initialize()
+#2 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(1408): CodeIgniter\Database\BaseConnection->query()
+#3 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(1427): CodeIgniter\Database\BaseConnection->listTables()
+#4 D:\OSPanel\domains\TextCodeigneter\system\Database\MigrationRunner.php(768): CodeIgniter\Database\BaseConnection->tableExists()
+#5 D:\OSPanel\domains\TextCodeigneter\system\Database\MigrationRunner.php(168): CodeIgniter\Database\MigrationRunner->ensureTable()
+#6 D:\OSPanel\domains\TextCodeigneter\system\Commands\Database\Migrate.php(84): CodeIgniter\Database\MigrationRunner->latest()
+#7 D:\OSPanel\domains\TextCodeigneter\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\Migrate->run()
+#8 D:\OSPanel\domains\TextCodeigneter\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run()
+#9 D:\OSPanel\domains\TextCodeigneter\spark(97): CodeIgniter\CLI\Console->run()
+#10 {main}
+ERROR - 2023-01-28 16:09:52 --> mysqli_sql_exception: Unknown table 'text.users' in D:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php(295): mysqli->query()
+#1 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 D:\OSPanel\domains\TextCodeigneter\system\Database\Forge.php(637): CodeIgniter\Database\BaseConnection->query()
+#4 D:\OSPanel\domains\TextCodeigneter\app\Database\Migrations\2023-01-28-155857_User.php(36): CodeIgniter\Database\Forge->dropTable()
+#5 D:\OSPanel\domains\TextCodeigneter\system\Database\MigrationRunner.php(877): App\Database\Migrations\User->down()
+#6 D:\OSPanel\domains\TextCodeigneter\system\Database\MigrationRunner.php(299): CodeIgniter\Database\MigrationRunner->migrate()
+#7 D:\OSPanel\domains\TextCodeigneter\system\Commands\Database\MigrateRollback.php(92): CodeIgniter\Database\MigrationRunner->regress()
+#8 D:\OSPanel\domains\TextCodeigneter\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\MigrateRollback->run()
+#9 D:\OSPanel\domains\TextCodeigneter\system\CLI\BaseCommand.php(114): CodeIgniter\CLI\Commands->run()
+#10 D:\OSPanel\domains\TextCodeigneter\system\Commands\Database\MigrateRefresh.php(84): CodeIgniter\CLI\BaseCommand->call()
+#11 D:\OSPanel\domains\TextCodeigneter\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\MigrateRefresh->run()
+#12 D:\OSPanel\domains\TextCodeigneter\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run()
+#13 D:\OSPanel\domains\TextCodeigneter\spark(97): CodeIgniter\CLI\Console->run()
+#14 {main}
+ERROR - 2023-01-28 16:12:14 --> mysqli_sql_exception: Unknown table 'text.user' in D:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 D:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php(295): mysqli->query()
+#1 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(691): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 D:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(605): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 D:\OSPanel\domains\TextCodeigneter\system\Database\Forge.php(637): CodeIgniter\Database\BaseConnection->query()
+#4 D:\OSPanel\domains\TextCodeigneter\app\Database\Migrations\2023-01-28-155857_User.php(36): CodeIgniter\Database\Forge->dropTable()
+#5 D:\OSPanel\domains\TextCodeigneter\system\Database\MigrationRunner.php(877): App\Database\Migrations\User->down()
+#6 D:\OSPanel\domains\TextCodeigneter\system\Database\MigrationRunner.php(299): CodeIgniter\Database\MigrationRunner->migrate()
+#7 D:\OSPanel\domains\TextCodeigneter\system\Commands\Database\MigrateRollback.php(92): CodeIgniter\Database\MigrationRunner->regress()
+#8 D:\OSPanel\domains\TextCodeigneter\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\MigrateRollback->run()
+#9 D:\OSPanel\domains\TextCodeigneter\system\CLI\BaseCommand.php(114): CodeIgniter\CLI\Commands->run()
+#10 D:\OSPanel\domains\TextCodeigneter\system\Commands\Database\MigrateRefresh.php(84): CodeIgniter\CLI\BaseCommand->call()
+#11 D:\OSPanel\domains\TextCodeigneter\system\CLI\Commands.php(65): CodeIgniter\Commands\Database\MigrateRefresh->run()
+#12 D:\OSPanel\domains\TextCodeigneter\system\CLI\Console.php(37): CodeIgniter\CLI\Commands->run()
+#13 D:\OSPanel\domains\TextCodeigneter\spark(97): CodeIgniter\CLI\Console->run()
+#14 {main}
