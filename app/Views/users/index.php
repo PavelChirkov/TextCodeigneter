@@ -5,7 +5,7 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
    <div class="container">
         <div class="row py-4">
             <div class="col-xl-12 text-end">
-                <a href="<?= base_url('posts/new') ?>" class="btn btn-primary">Add Post</a>
+                <a href="<?= base_url('user/new') ?>" class="btn btn-primary">Add Post</a>
             </div>
         </div>
 
@@ -44,7 +44,7 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                                             foreach ($users as $post): ?>
                                                 <tr>
                                                     <td><?= $post['id'] ?></td>
-                                                    <td><?= $post['name'] ?></td>
+                                                    <td><?= $post['login'] ?></td>
                                                     <td><?= $post['description'] ?></td>
                                                     <td class="d-flex">
                                                         <a href="<?= base_url('posts/'.$post['id']) ?>" class="btn btn-sm btn-info mx-1" title="Show"><i class="bi bi-info-square"></i></a>

@@ -54,7 +54,7 @@ class UserController extends ResourceController
     public function new()
     {
         //
-        return view('user/create');
+        return view('users/create');
     }
 
     /**
@@ -66,19 +66,21 @@ class UserController extends ResourceController
     {
         //
         $inputs = $this->validate([
-            'title' => 'required|min_length[5]',
+            'login' => 'required|min_length[5]',
             'description' => 'required|min_length[5]',
         ]);
 
         if (!$inputs) {
-            return view('user/create', [
+
+            return view('users/create', [
                 'validation' => $this->validator
             ]);
         }
 
         $this->user->save([
-            'title' => $this->request->getVar('title'),
-            'description'  => $this->request->getVar('description')
+            'login' => $this->request->getVar('login'),
+            'password' => '12334',
+            'description' => $this->request->getVar('description'),
         ]);
         session()->setFlashdata('success', 'Success! post created.');
         return redirect()->to(site_url('/user'));
