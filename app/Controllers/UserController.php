@@ -15,7 +15,7 @@ class UserController extends ResourceController
     {
         helper(['form', 'url', 'session']);
         $this->session = \Config\Services::session();
-        $this->post = new User;     
+        $this->user = new User;     
     }
     /**
      * Return an array of resource objects, themselves in array format
@@ -24,8 +24,8 @@ class UserController extends ResourceController
      */
     public function index()
     {
-        $posts = $this->user->orderBy('id', 'desc')->findAll();
-        return view('user/index', compact('posts'));
+        $users = $this->user->orderBy('id', 'desc')->findAll();
+        return view('users/index', compact('users'));
         //
     }
 

@@ -1,0 +1,60 @@
+INFO - 2023-01-29 07:18:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-01-29 07:18:33 --> Call to a member function orderBy() on null
+in APPPATH\Controllers\UserController.php on line 27.
+ 1 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UserController->index()
+ 2 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController()
+ 3 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest()
+ 4 FCPATH\index.php(69): CodeIgniter\CodeIgniter->run()
+INFO - 2023-01-29 07:19:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-01-29 07:19:15 --> Invalid file: "user/index.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render()
+ 3 APPPATH\Controllers\UserController.php(28): view()
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UserController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH\index.php(69): CodeIgniter\CodeIgniter->run()
+INFO - 2023-01-29 07:21:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-01-29 07:21:38 --> Invalid file: "user/index.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render()
+ 3 APPPATH\Controllers\UserController.php(28): view()
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UserController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH\index.php(69): CodeIgniter\CodeIgniter->run()
+INFO - 2023-01-29 07:21:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-01-29 07:21:40 --> Invalid file: "user/index.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render()
+ 3 APPPATH\Controllers\UserController.php(28): view()
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UserController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH\index.php(69): CodeIgniter\CodeIgniter->run()
+INFO - 2023-01-29 07:21:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-01-29 07:21:41 --> Invalid file: "user/index.php"
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 33.
+ 1 SYSTEMPATH\View\View.php(201): CodeIgniter\Exceptions\FrameworkException::forInvalidFile()
+ 2 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render()
+ 3 APPPATH\Controllers\UserController.php(28): view()
+ 4 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UserController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController()
+ 6 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest()
+ 7 FCPATH\index.php(69): CodeIgniter\CodeIgniter->run()
+INFO - 2023-01-29 07:21:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2023-01-29 07:21:56 --> count(): Argument #1 ($value) must be of type Countable|array, null given
+in APPPATH\Views\users\index.php on line 43.
+ 1 SYSTEMPATH\View\View.php(213): include()
+ 2 SYSTEMPATH\View\View.php(216): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1177): CodeIgniter\View\View->render()
+ 4 APPPATH\Controllers\UserController.php(28): view()
+ 5 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UserController->index()
+ 6 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController()
+ 7 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest()
+ 8 FCPATH\index.php(69): CodeIgniter\CodeIgniter->run()
+INFO - 2023-01-29 07:22:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-01-29 07:23:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
