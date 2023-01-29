@@ -2,10 +2,21 @@
 
 namespace App\Controllers;
 
+
+use App\Models\User;
 use CodeIgniter\RESTful\ResourceController;
 
 class UserController extends ResourceController
 {
+
+    private $user;
+
+    public function __construct()
+    {
+        helper(['form', 'url', 'session']);
+        $this->session = \Config\Services::session();
+        $this->post = new User;     
+    }
     /**
      * Return an array of resource objects, themselves in array format
      *
@@ -13,6 +24,8 @@ class UserController extends ResourceController
      */
     public function index()
     {
+        $posts = $this->user->orderBy('id', 'desc')->findAll();
+        return view('user/index', compact('posts'));
         //
     }
 
@@ -24,6 +37,13 @@ class UserController extends ResourceController
     public function show($id = null)
     {
         //
+        $user = $this->user->find($id);
+        if($user) {
+            return view('user/show', compact('post'));
+        }
+        else {
+            return redirect()->to('/user');
+        }
     }
 
     /**
@@ -34,6 +54,7 @@ class UserController extends ResourceController
     public function new()
     {
         //
+        return view('user/create');
     }
 
     /**
@@ -44,6 +65,23 @@ class UserController extends ResourceController
     public function create()
     {
         //
+        $inputs = $this->validate([
+            'title' => 'required|min_length[5]',
+            'description' => 'required|min_length[5]',
+        ]);
+
+        if (!$inputs) {
+            return view('user/create', [
+                'validation' => $this->validator
+            ]);
+        }
+
+        $this->user->save([
+            'title' => $this->request->getVar('title'),
+            'description'  => $this->request->getVar('description')
+        ]);
+        session()->setFlashdata('success', 'Success! post created.');
+        return redirect()->to(site_url('/user'));
     }
 
     /**
@@ -54,6 +92,14 @@ class UserController extends ResourceController
     public function edit($id = null)
     {
         //
+        $user = $this->user->find($id);
+        if($user) {
+            return view('user/edit', compact('post'));
+        }
+        else {
+            session()->setFlashdata('failed', 'Alert! no post found.');
+            return redirect()->to('/user');
+        }
     }
 
     /**
@@ -64,6 +110,24 @@ class UserController extends ResourceController
     public function update($id = null)
     {
         //
+        $inputs = $this->validate([
+            'title' => 'required|min_length[5]',
+            'description' => 'required|min_length[5]',
+        ]);
+
+        if (!$inputs) {
+            return view('user/create', [
+                'validation' => $this->validator
+            ]);
+        }
+
+        $this->user->save([
+            'id' => $id,
+            'title' => $this->request->getVar('title'),
+            'description'  => $this->request->getVar('description')
+        ]);
+        session()->setFlashdata('success', 'Success! post updated.');
+        return redirect()->to(base_url('/user'));
     }
 
     /**
@@ -74,5 +138,8 @@ class UserController extends ResourceController
     public function delete($id = null)
     {
         //
+        $this->user->delete($id);
+        session()->setFlashdata('success', 'Success! post deleted.');
+        return redirect()->to(base_url('/user'));
     }
 }
