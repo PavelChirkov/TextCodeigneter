@@ -26,7 +26,7 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
 
                     <div class="card">
                         <div class="card-header">
-                            <h5 class="card-title">Posts</h5>
+                            <h5 class="card-title">User</h5>
                         </div>
                         <div class="card-body">
                             <table class="table table-striped">
@@ -47,9 +47,9 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                                                     <td><?= $post['login'] ?></td>
                                                     <td><?= $post['description'] ?></td>
                                                     <td class="d-flex">
-                                                        <a href="<?= base_url('posts/'.$post['id']) ?>" class="btn btn-sm btn-info mx-1" title="Show"><i class="bi bi-info-square"></i></a>
-                                                        <a href="<?= base_url('posts/edit/'.$post['id']) ?>" class="btn btn-sm btn-success mx-1" title="Edit"><i class="bi bi-pencil-square"></i></a>
-                                                        <form class="display-none" method="post" action="<?= base_url('posts/'.$post['id'])?>" id="postDeleteForm<?=$post['id']?>">
+                                                        <a href="<?= base_url('user/'.$post['id']) ?>" class="btn btn-sm btn-info mx-1" title="Show"><i class="bi bi-info-square"></i></a>
+                                                        <a href="<?= base_url('user/edit/'.$post['id']) ?>" class="btn btn-sm btn-success mx-1" title="Edit"><i class="bi bi-pencil-square"></i></a>
+                                                        <form class="display-none" method="post" action="<?= base_url('user/'.$post['id'])?>" id="postDeleteForm<?=$post['id']?>">
                                                         <input type="hidden" name="_method" value="DELETE"/>
                                                             <a href="jаvascript:void(0)" onclick="deletePost('postDeleteForm<?=$post['id']?>')" class="btn btn-sm btn-danger" title="Delete"><i class="bi bi-trash"></i></a>
                                                         </form>

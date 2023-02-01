@@ -39,7 +39,7 @@ class UserController extends ResourceController
         //
         $user = $this->user->find($id);
         if($user) {
-            return view('user/show', compact('post'));
+            return view('users/show', compact('user'));
         }
         else {
             return redirect()->to('/user');
@@ -96,7 +96,7 @@ class UserController extends ResourceController
         //
         $user = $this->user->find($id);
         if($user) {
-            return view('user/edit', compact('post'));
+            return view('users/edit', compact('user'));
         }
         else {
             session()->setFlashdata('failed', 'Alert! no post found.');
@@ -113,7 +113,7 @@ class UserController extends ResourceController
     {
         //
         $inputs = $this->validate([
-            'title' => 'required|min_length[5]',
+            'login' => 'required|min_length[5]',
             'description' => 'required|min_length[5]',
         ]);
 
@@ -125,7 +125,7 @@ class UserController extends ResourceController
 
         $this->user->save([
             'id' => $id,
-            'title' => $this->request->getVar('title'),
+            'login' => $this->request->getVar('login'),
             'description'  => $this->request->getVar('description')
         ]);
         session()->setFlashdata('success', 'Success! post updated.');
