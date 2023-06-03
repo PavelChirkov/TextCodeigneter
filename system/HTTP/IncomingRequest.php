@@ -329,7 +329,7 @@ class IncomingRequest extends Request
         $uri = $_SERVER['QUERY_STRING'] ?? @getenv('QUERY_STRING');
 
         if (trim($uri, '/') === '') {
-            return '';
+            return '/';
         }
 
         if (strncmp($uri, '/', 1) === 0) {
@@ -443,7 +443,7 @@ class IncomingRequest extends Request
      * instance, this can be used to change the "current URL"
      * for testing.
      *
-     * @param string   $path   URI path relative to SCRIPT_NAME
+     * @param string   $path   URI path relative to baseURL
      * @param App|null $config Optional alternate config to use
      *
      * @return $this
@@ -451,6 +451,9 @@ class IncomingRequest extends Request
     public function setPath(string $path, ?App $config = null)
     {
         $this->path = $path;
+
+        // @TODO remove this. The path of the URI object should be a full URI path,
+        //      not a URI path relative to baseURL.
         $this->uri->setPath($path);
 
         $config ??= $this->config;
@@ -481,8 +484,11 @@ class IncomingRequest extends Request
                 $this->uri->setScheme('https');
             }
         } elseif (! is_cli()) {
+            // Do not change exit() to exception; Request is initialized before
+            // setting the exception handler, so if an exception is raised, an
+            // error will be displayed even if in the production environment.
             // @codeCoverageIgnoreStart
-            exit('You have an empty or invalid base URL. The baseURL value must be set in Config\App.php, or through the .env file.');
+            exit('You have an empty or invalid baseURL. The baseURL value must be set in app/Config/App.php, or through the .env file.');
             // @codeCoverageIgnoreEnd
         }
 
@@ -566,7 +572,7 @@ class IncomingRequest extends Request
      *
      * @param array|string|null $index
      * @param int|null          $filter Filter constant
-     * @param mixed             $flags
+     * @param array|int|null    $flags
      *
      * @return array|bool|float|int|stdClass|string|null
      */
@@ -701,7 +707,7 @@ class IncomingRequest extends Request
      * @param int|null          $filter Filter Constant
      * @param array|int|null    $flags  Option
      *
-     * @return mixed
+     * @return array|bool|float|int|object|string|null
      */
     public function getRawInputVar($index = null, ?int $filter = null, $flags = null)
     {
@@ -753,9 +759,9 @@ class IncomingRequest extends Request
      *
      * @param array|string|null $index  Index for item to fetch from $_GET.
      * @param int|null          $filter A filter name to apply.
-     * @param mixed|null        $flags
+     * @param array|int|null    $flags
      *
-     * @return mixed
+     * @return array|bool|float|int|object|string|null
      */
     public function getGet($index = null, $filter = null, $flags = null)
     {
@@ -767,9 +773,9 @@ class IncomingRequest extends Request
      *
      * @param array|string|null $index  Index for item to fetch from $_POST.
      * @param int|null          $filter A filter name to apply
-     * @param mixed             $flags
+     * @param array|int|null    $flags
      *
-     * @return mixed
+     * @return array|bool|float|int|object|string|null
      */
     public function getPost($index = null, $filter = null, $flags = null)
     {
@@ -781,9 +787,9 @@ class IncomingRequest extends Request
      *
      * @param array|string|null $index  Index for item to fetch from $_POST or $_GET
      * @param int|null          $filter A filter name to apply
-     * @param mixed             $flags
+     * @param array|int|null    $flags
      *
-     * @return mixed
+     * @return array|bool|float|int|object|string|null
      */
     public function getPostGet($index = null, $filter = null, $flags = null)
     {
@@ -803,9 +809,9 @@ class IncomingRequest extends Request
      *
      * @param array|string|null $index  Index for item to be fetched from $_GET or $_POST
      * @param int|null          $filter A filter name to apply
-     * @param mixed             $flags
+     * @param array|int|null    $flags
      *
-     * @return mixed
+     * @return array|bool|float|int|object|string|null
      */
     public function getGetPost($index = null, $filter = null, $flags = null)
     {
@@ -825,9 +831,9 @@ class IncomingRequest extends Request
      *
      * @param array|string|null $index  Index for item to be fetched from $_COOKIE
      * @param int|null          $filter A filter name to be applied
-     * @param mixed             $flags
+     * @param array|int|null    $flags
      *
-     * @return mixed
+     * @return array|bool|float|int|object|string|null
      */
     public function getCookie($index = null, $filter = null, $flags = null)
     {

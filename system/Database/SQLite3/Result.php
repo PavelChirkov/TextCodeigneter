@@ -80,6 +80,8 @@ class Result extends BaseResult
 
     /**
      * Frees the current result.
+     *
+     * @return void
      */
     public function freeResult()
     {
@@ -94,7 +96,7 @@ class Result extends BaseResult
      * internally before fetching results to make sure the result set
      * starts at zero.
      *
-     * @return mixed
+     * @return bool
      *
      * @throws DatabaseException
      */
@@ -112,7 +114,7 @@ class Result extends BaseResult
      *
      * Overridden by driver classes.
      *
-     * @return mixed
+     * @return array|false
      */
     protected function fetchAssoc()
     {
@@ -124,7 +126,7 @@ class Result extends BaseResult
      *
      * Overridden by child classes.
      *
-     * @return bool|object
+     * @return Entity|false|object|stdClass
      */
     protected function fetchObject(string $className = 'stdClass')
     {

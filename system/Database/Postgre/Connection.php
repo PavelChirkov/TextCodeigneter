@@ -128,11 +128,16 @@ class Connection extends BaseConnection
             return $this->dataCache['version'];
         }
 
-        if (! $this->connID || ($pgVersion = pg_version($this->connID)) === false) {
+        if (! $this->connID) {
             $this->initialize();
         }
 
-        return isset($pgVersion['server']) ? $this->dataCache['version'] = $pgVersion['server'] : false;
+        $pgVersion                  = pg_version($this->connID);
+        $this->dataCache['version'] = isset($pgVersion['server']) ?
+            (preg_match('/^(\d+\.\d+)/', $pgVersion['server'], $matches) ? $matches[1] : '') :
+            '';
+
+        return $this->dataCache['version'];
     }
 
     /**
@@ -533,7 +538,7 @@ class Connection extends BaseConnection
      *
      * Overrides BaseConnection::isWriteType, adding additional read query types.
      *
-     * @param mixed $sql
+     * @param string $sql
      */
     public function isWriteType($sql): bool
     {

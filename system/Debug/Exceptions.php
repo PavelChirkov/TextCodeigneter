@@ -68,6 +68,8 @@ class Exceptions
      */
     protected $response;
 
+    private ?Throwable $exceptionCaughtByExceptionHandler = null;
+
     /**
      * @param CLIRequest|IncomingRequest $request
      */
@@ -113,7 +115,14 @@ class Exceptions
      */
     public function exceptionHandler(Throwable $exception)
     {
+        $this->exceptionCaughtByExceptionHandler = $exception;
+
         [$statusCode, $exitCode] = $this->determineCodes($exception);
+
+        // Get the first exception.
+        while ($prevException = $exception->getPrevious()) {
+            $exception = $prevException;
+        }
 
         if ($this->config->log === true && ! in_array($statusCode, $this->config->ignoreCodes, true)) {
             log_message('critical', "{message}\nin {exFile} on line {exLine}.\n{trace}", [
@@ -190,6 +199,13 @@ class Exceptions
         }
 
         ['type' => $type, 'message' => $message, 'file' => $file, 'line' => $line] = $error;
+
+        if ($this->exceptionCaughtByExceptionHandler) {
+            $message .= "\n【Previous Exception】\n"
+                . get_class($this->exceptionCaughtByExceptionHandler) . "\n"
+                . $this->exceptionCaughtByExceptionHandler->getMessage() . "\n"
+                . $this->exceptionCaughtByExceptionHandler->getTraceAsString();
+        }
 
         if (in_array($type, [E_ERROR, E_CORE_ERROR, E_COMPILE_ERROR, E_PARSE], true)) {
             $this->exceptionHandler(new ErrorException($message, 0, $type, $file, $line));
@@ -519,9 +535,6 @@ class Exceptions
 
                     case is_resource($value):
                         return sprintf('resource (%s)', get_resource_type($value));
-
-                    case is_string($value):
-                        return var_export(clean_path($value), true);
 
                     default:
                         return var_export($value, true);
