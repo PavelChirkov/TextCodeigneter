@@ -47,6 +47,10 @@ $routes->get('user/edit/(:num)', 'UserController::edit/$1');
 $routes->put('user/(:num)', 'UserController::update/$1');
 $routes->delete('user/(:num)', 'UserController::delete/$1');
 
+$routes->get('login', 'LoginController::index');
+$routes->post('login/on', 'LoginController::log_on'); 
+
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
