@@ -63,3 +63,12 @@ $routes->delete('user/(:num)', 'UserController::delete/$1');
 if (is_file(APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php')) {
     require APPPATH . 'Config/' . ENVIRONMENT . '/Routes.php';
 }
+
+
+$routes->get('user', 'UserController::index');
+$routes->get('user/new', 'UserController::new');
+$routes->post('user', 'UserController::create');
+$routes->get('user/(:num)', 'UserController::show/$1');
+$routes->get('user/edit/(:num)', 'UserController::edit/$1');
+$routes->put('user/(:num)', 'UserController::update/$1');
+$routes->delete('user/(:num)', 'UserController::delete/$1');
