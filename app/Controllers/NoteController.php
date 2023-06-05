@@ -2,20 +2,17 @@
 
 namespace App\Controllers;
 
-
-use App\Models\User;
 use CodeIgniter\RESTful\ResourceController;
+use App\Models\Note;
 
-class UserController extends ResourceController
+class NoteController extends ResourceController
 {
+    private $note;
 
-    private $user;
-
-    public function __construct()
-    {
-        helper(['form', 'url', 'session']);
-        $this->session = \Config\Services::session();
-        $this->user = new User;     
+    public function __construct(){
+        helper(['form','url','session']);
+        $this->sesion = \Config\Services::session();
+        $this->note = new Note;
     }
     /**
      * Return an array of resource objects, themselves in array format
@@ -24,9 +21,8 @@ class UserController extends ResourceController
      */
     public function index()
     {
-        $users = $this->user->orderBy('id', 'desc')->findAll();
-        return view('users/index', compact('users'));
-        //
+        $notes = $this->note->orderBy('id','desc')->findAll();
+        return view('notes/index',compact('notes'));
     }
 
     /**
@@ -36,13 +32,12 @@ class UserController extends ResourceController
      */
     public function show($id = null)
     {
-        //
-        $user = $this->user->find($id);
-        if($user) {
-            return view('user/show', compact('post'));
+        $notes = $this->note->find($id);
+        if($notes) {
+            return view('notes/show', compact('notes'));
         }
         else {
-            return redirect()->to('/user');
+            return redirect()->to('/notes');
         }
     }
 
@@ -53,8 +48,7 @@ class UserController extends ResourceController
      */
     public function new()
     {
-        //
-        return view('users/create');
+        return view('notes/create');
     }
 
     /**
@@ -64,26 +58,24 @@ class UserController extends ResourceController
      */
     public function create()
     {
-        //
         $inputs = $this->validate([
-            'login' => 'required|min_length[5]',
+            'title' => 'required|min_length[5]',
             'description' => 'required|min_length[5]',
         ]);
 
         if (!$inputs) {
-
-            return view('users/create', [
+            return view('notes/create', [
                 'validation' => $this->validator
             ]);
         }
 
-        $this->user->save([
-            'login' => $this->request->getVar('login'),
-            'password' => '12334',
-            'description' => $this->request->getVar('description'),
+        $this->note->save([
+            'title' => $this->request->getVar('title'),
+            'user_id' => '1',
+            'description'  => $this->request->getVar('description')
         ]);
         session()->setFlashdata('success', 'Success! post created.');
-        return redirect()->to(site_url('/user'));
+        return redirect()->to(site_url('/notes'));
     }
 
     /**
@@ -93,14 +85,13 @@ class UserController extends ResourceController
      */
     public function edit($id = null)
     {
-        //
-        $user = $this->user->find($id);
-        if($user) {
-            return view('user/edit', compact('post'));
+        $notes = $this->note->find($id);
+        if($notes) {
+            return view('notes/edit', compact('notes'));
         }
         else {
             session()->setFlashdata('failed', 'Alert! no post found.');
-            return redirect()->to('/user');
+            return redirect()->to('/notes');
         }
     }
 
@@ -111,25 +102,25 @@ class UserController extends ResourceController
      */
     public function update($id = null)
     {
-        //
         $inputs = $this->validate([
             'title' => 'required|min_length[5]',
             'description' => 'required|min_length[5]',
         ]);
 
         if (!$inputs) {
-            return view('user/create', [
+            return view('notes/create', [
                 'validation' => $this->validator
             ]);
         }
 
-        $this->user->save([
+        $this->note->save([
             'id' => $id,
             'title' => $this->request->getVar('title'),
+            'user_id' => '1',
             'description'  => $this->request->getVar('description')
         ]);
         session()->setFlashdata('success', 'Success! post updated.');
-        return redirect()->to(base_url('/user'));
+        return redirect()->to(base_url('/notes'));
     }
 
     /**
@@ -139,9 +130,8 @@ class UserController extends ResourceController
      */
     public function delete($id = null)
     {
-        //
-        $this->user->delete($id);
+        $this->note->delete($id);
         session()->setFlashdata('success', 'Success! post deleted.');
-        return redirect()->to(base_url('/user'));
+        return redirect()->to(base_url('/notes'));
     }
 }

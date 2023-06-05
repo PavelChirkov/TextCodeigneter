@@ -31,6 +31,22 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 
+$routes->get('notes', 'NoteController::index');
+$routes->get('notes/new', 'NoteController::new');
+$routes->post('notes', 'NoteController::create');
+$routes->get('notes/(:num)', 'NoteController::show/$1');
+$routes->get('notes/edit/(:num)', 'NoteController::edit/$1');
+$routes->put('notes/(:num)', 'NoteController::update/$1');
+$routes->delete('notes/(:num)', 'NoteController::delete/$1');
+
+$routes->get('user', 'UserController::index');
+$routes->get('user/new', 'UserController::new');
+$routes->post('user', 'UserController::create');
+$routes->get('user/(:num)', 'UserController::show/$1');
+$routes->get('user/edit/(:num)', 'UserController::edit/$1');
+$routes->put('user/(:num)', 'UserController::update/$1');
+$routes->delete('user/(:num)', 'UserController::delete/$1');
+
 /*
  * --------------------------------------------------------------------
  * Additional Routing
