@@ -35,14 +35,29 @@ class LoginController extends ResourceController
 
         $tUser = $this->user->where('login', $login)->first();
         
-        print_r($tUser);
-        print_r($password);
+       /* print_r($tUser);
+        print_r($password);*/
 
         if ($password == $tUser['password']){
-            echo "Password matches.";
+             
+            $data = [
+                'user_id'  => $tUser['id'],
+                'logged_in' => true,
+            ];
+            
+            $this->session->set($data);
+            return redirect()->to(site_url('cabinet'));
+            exit();
+
         }
         else {
-            echo "Password incorrect.";
+
+            return redirect()->to(site_url('/'));
+            exit();
+
         }
+    }
+    public function logout(){
+        $this->session->destroy();
     }
 }

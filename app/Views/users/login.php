@@ -42,5 +42,4 @@ $this->section('title') ?> Create Post <?= $this->endSection() ?>
         </div>
     </div>
 </div>
-
 <?= $this->endSection() ?>
