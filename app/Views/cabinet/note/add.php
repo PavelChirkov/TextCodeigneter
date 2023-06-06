@@ -1,6 +1,6 @@
-<? 
-    print_r($user);
-?>
+<?= $this->extend('layouts/main');
+$this->section('title') ?> Posts <?= $this->endSection() ?>
+<?= $this->section('content'); ?>
 <form action="<?= base_url('cabinet/note/save') ?>" method="POST">
         <?= csrf_field() ?>
         <input type="hidden" name="parent" value="<?=$id;?>">
@@ -20,3 +20,4 @@
             <button type="submit">Добавить</button>
         </div>
 </form>
+<?= $this->endSection(); ?>
