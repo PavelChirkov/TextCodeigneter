@@ -35,10 +35,6 @@ class CabinetController extends ResourceController
     public function index()
     {
         return view('cabinet/index',array('user' => $this->user));
-        /*print_r("cabinet");
-        
-       /* print_r($this->session->get());
-        return view('cabinet/index');*/
     }
     public function noteAdd(int $id=0){ 
         return view('cabinet/note/add',array('user' => $this->user, 'id' => $id));
@@ -72,7 +68,11 @@ class CabinetController extends ResourceController
     public function noteView(int $id=0){
         $note = new Note();
         $note = $note->find($id); 
-        /*print_r($note);*/
-        return view('cabinet/note/view',array('user' => $this->user, 'note' => $note));
+
+        //все дочерние элементы
+        $noteAll = new Note();
+        $noteAll = $noteAll->where('parent', $id)->findAll();
+
+        return view('cabinet/note/view',array('user' => $this->user, 'note' => $note, 'noteAll' => $noteAll));
     }
 }
