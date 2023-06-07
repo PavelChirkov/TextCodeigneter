@@ -18,6 +18,11 @@ class Note extends Migration
                 'default' => '0',
                 'null'=>true
             ],
+            'status' => [
+                'type'       => 'ENUM',
+                'constraint' => ['publish', 'pending', 'draft'],
+                'default'    => 'pending',
+            ],
             'title' => [
                 'type' => 'VARCHAR',
                 'constraint' => '100'
@@ -30,7 +35,7 @@ class Note extends Migration
             'text' => [
                 'type' => 'TEXT',           
             ],
-                'description' => [
+            'description' => [
                 'type' => 'TEXT',
                 'constraint' => '600'
             ],
