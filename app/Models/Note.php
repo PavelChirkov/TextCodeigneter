@@ -14,7 +14,7 @@ class Note extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user_id', 'title', 'parent', 'text', 'description'];
+    protected $allowedFields    = ['user_id', 'title', 'parent', 'text', 'status','visible','description'];
 
     // Dates
     protected $useTimestamps = false;

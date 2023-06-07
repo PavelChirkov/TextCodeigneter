@@ -39,6 +39,11 @@ class Note extends Migration
                 'type' => 'TEXT',
                 'constraint' => '600'
             ],
+            'visible' => [
+                'type'       => 'ENUM',
+                'constraint' => ['on', 'off'],
+                'default'    => 'on',
+            ],
             'created_at datetime default current_timestamp',
             'updated_at datetime default current_timestamp on update current_timestamp',
             'FOREIGN KEY (user_id)  REFERENCES user (id)'

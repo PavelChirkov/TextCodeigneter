@@ -1,7 +1,6 @@
 //клик по элементу открыть/закрыть
 
 let openClouse = document.querySelector('.action-open-close .button');
-
 openClouse.addEventListener("click",
     function (event) {
         let aoc = this.closest('.action-open-close');
@@ -14,5 +13,17 @@ openClouse.addEventListener("click",
             button.innerHTML = 'Открыть';
         }
 
+    }
+);
+
+
+let openEdit = document.querySelector('.edit-text');
+openEdit.addEventListener("click",
+    function (event) {
+        let aoc = this.closest('.text');
+        let et = aoc.querySelector('.inner');
+        et.style.display = "none";
+        let ef = aoc.querySelector('.edit-form');
+        ef.style.display = "block";
     }
 );

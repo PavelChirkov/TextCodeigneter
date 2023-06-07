@@ -54,6 +54,7 @@ class CabinetController extends ResourceController
             ]);
             return view('cabinet/note/add',array('user' => $this->user, 'id' => $id));
         }
+        $parent = $this->request->getVar('parent');
         $note = new Note();
         $note->save([
             'title' => $this->request->getVar('title'),
@@ -64,7 +65,12 @@ class CabinetController extends ResourceController
             'description'  => $this->request->getVar('description')
         ]);
         session()->setFlashdata('success', 'Success! post created.');
-        return redirect()->to('/cabinet/note/view/'.$note->insertID);
+        if($parent > 0){
+            return redirect()->to('/cabinet/note/view/'.$parent);
+        }else{
+            return redirect()->to('/cabinet/note/view/'.$note->insertID);
+        }
+        
     }
     public function noteView(int $id=0){
         $note = new Note();
@@ -75,5 +81,13 @@ class CabinetController extends ResourceController
         $noteAll = $noteAll->where('parent', $id)->findAll();
 
         return view('cabinet/note/view',array('user' => $this->user, 'note' => $note, 'noteAll' => $noteAll));
+    }
+    public function noteUpdate(int $id=0){
+       
+        $data = $this->request->getVar();
+        $data['id'] = $id;
+        $note = new Note();
+        $note->save($data);
+        session()->setFlashdata('success', 'Success! post updated.');
     }
 }

@@ -1016,3 +1016,28 @@ main h1 {
   cursor: pointer;
   position: absolute;
 }
+#cabinet-paper {
+  background-color: #ffffee;
+  padding: 8px;
+  position: relative;
+}
+#cabinet-paper .flex-grid {
+  position: relative;
+  opacity: 0.9;
+}
+#cabinet-paper .flex-grid .bline {
+  width: 2px;
+  background-color: #ddd;
+  height: 40px;
+  position: absolute;
+  left: 50%;
+  bottom: -20px;
+}
+#cabinet-paper .flex-grid .edit-form {
+  display: none;
+}
+#cabinet-paper .flex-grid .edit-text {
+  cursor: pointer;
+  margin: 5px;
+  float: right;
+}
