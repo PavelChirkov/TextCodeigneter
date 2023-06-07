@@ -33,5 +33,6 @@
     <?=$this->renderSection('content') ?>
   
   </main>
+  <script src="/js/main.js"></script>
   </body>
   </html>

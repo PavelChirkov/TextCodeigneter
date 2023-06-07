@@ -58,6 +58,7 @@ class CabinetController extends ResourceController
         $note->save([
             'title' => $this->request->getVar('title'),
             'user_id' => $id,
+            'status' => $this->request->getVar('status'),
             'parent' =>$this->request->getVar('parent'),
             'text'  => $this->request->getVar('text'),
             'description'  => $this->request->getVar('description')
