@@ -34,7 +34,8 @@ class CabinetController extends ResourceController
      */
     public function index()
     {
-        return view('cabinet/index',array('user' => $this->user));
+        $notes  = $this->getNoteLimit(0,10);
+        return view('cabinet/index',['user' => $this->user, 'notes' => $notes]);
     }
     public function noteAdd(int $id=0){ 
         return view('cabinet/note/add',array('user' => $this->user, 'id' => $id));
@@ -94,5 +95,11 @@ class CabinetController extends ResourceController
         $note = new Note();
         $return = $note->where('id', $id)->first();
         return $return['text'];
+    }
+
+    //////note all
+    private function getNoteLimit(int $limit = 0, int $offset = 0){
+        $note = new Note();
+        return $note->select('id, title')->where('user_id', $this->user["id"])->findAll($limit, $offset);
     }
 }

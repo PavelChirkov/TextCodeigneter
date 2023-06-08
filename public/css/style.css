@@ -895,7 +895,7 @@ main h1 {
   flex: 1;
   margin: 0 0 20px 0;
   border: 1px solid #ddd;
-  background: #fff;
+  background: #FFFAFA;
 }
 .flex-grid div.content input[type="text"],
 .flex-grid div.content textarea {
@@ -967,6 +967,25 @@ main h1 {
 .flex-grid div.content .status span {
   margin-left: 10px;
 }
+.flex-grid div.content .panel-note {
+  padding: 3px 10px;
+  border-top: 1px solid #ddd;
+}
+.flex-grid div.content .panel-note .icon_note_param {
+  width: 16px;
+  height: 16px;
+  opacity: .5;
+  margin-right: 5px;
+}
+.flex-grid div.content .panel-note .text-value {
+  float: right;
+  font-size: 12px;
+  color: #000;
+  opacity: .5;
+}
+.flex-grid div.content .edit-text {
+  opacity: .5;
+}
 .flex-grid div:last-child {
   margin-right: 0;
 }
@@ -976,7 +995,7 @@ main h1 {
   font-weight: 300;
   text-transform: uppercase;
   border-bottom: 1px solid #ddd;
-  background: #fafafa;
+  background: #FAF0E6;
 }
 .action-open-close {
   border-top: 1px solid #000;
@@ -993,7 +1012,7 @@ main h1 {
 .action-open-close.open .content {
   display: block;
   opacity: 1;
-  border-top: none!important;
+  border-top: none !important;
 }
 .action-open-close.open .button {
   content: ">";
@@ -1017,7 +1036,7 @@ main h1 {
   position: absolute;
 }
 #cabinet-paper {
-  background-color: #ffffee;
+  background-color: #f0efe2;
   padding: 8px;
   position: relative;
 }

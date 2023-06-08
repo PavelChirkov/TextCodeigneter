@@ -29,54 +29,55 @@ for (const button of openEdit) {
 }
 
 
-function AjaxFormSendEVN(element,hideElement,showelEment){
+function AjaxFormSendEVN(element, hideElement, showelEment) {
 
-    var form = document.querySelector(element);
+    var forms = document.querySelectorAll(element);
+    for (const form of forms) {
 
-    form.addEventListener("submit", function (e) {
+        form.addEventListener("submit", function (e) {
 
-        e.preventDefault();
-        let me = this;
-        var form = e.target;
-        var data = new FormData(form);
+            e.preventDefault();
+            let me = this;
+            var form = e.target;
+            var data = new FormData(form);
+
+            var request = new XMLHttpRequest();
+
+
+            /*request.responseType = 'json';*/
+            request.open(form.method, form.action);
+            request.send(data);
+
+            /*request.onreadystatechange = function () {
+                if(request.status == "200"){
+                   
+                     let aoc = me.closest(hideElement);
+                     aoc.style.display = "none";
     
-        var request = new XMLHttpRequest();
+                     let mds = aoc.closest('.text');
+                     let tti = mds.querySelector(showelEment);
+                     tti.style.display = "block";
+    
+                     alert(request.responseText);
+                }
+             }*/
+            request.onload = function () {
+                let rsd = request.responseText;
 
+                let aoc = me.closest(hideElement);
+                aoc.style.display = "none";
 
-        /*request.responseType = 'json';*/
-        request.open(form.method, form.action);
-        request.send(data);
+                let mds = aoc.closest('.text');
+                let tti = mds.querySelector(showelEment);
+                tti.style.display = "block";
+                tti.innerHTML = rsd;
+            };
 
-        /*request.onreadystatechange = function () {
-            if(request.status == "200"){
-               
-                 let aoc = me.closest(hideElement);
-                 aoc.style.display = "none";
-
-                 let mds = aoc.closest('.text');
-                 let tti = mds.querySelector(showelEment);
-                 tti.style.display = "block";
-
-                 alert(request.responseText);
-            }
-         }*/
-        request.onload = function() {
-            let rsd =  request.responseText;
-
-            let aoc = me.closest(hideElement);
-            aoc.style.display = "none";
-
-            let mds = aoc.closest('.text');
-            let tti = mds.querySelector(showelEment);
-            tti.style.display = "block";
-            tti.innerHTML = rsd;
-            
-        };
-
-    });
+        });
+    }
 
 }
 
-AjaxFormSendEVN('.ajaxForm','.edit-form','.inner');
+AjaxFormSendEVN('.ajaxForm', '.edit-form', '.inner');
 
 
