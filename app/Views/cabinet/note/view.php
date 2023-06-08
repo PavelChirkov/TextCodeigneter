@@ -27,7 +27,7 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
     </div>
     <div id="cabinet-paper">
         <?foreach($noteAll as $row){?>
-            <div class="flex-grid">
+            <div class="flex-grid <?=$row["status"];?>">
                 <div class="content">
                     <h2><?=$row["title"];?></h2>    
                     <div class="text">
@@ -36,7 +36,7 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                         </div>
                         <div class="inner"><?=$row["text"];?></div>
                         <div class="edit-form">
-                            <form action="/cabinet/note/update/<?=$row["id"];?>" method="POST">
+                            <form action="/cabinet/note/update/<?=$row["id"];?>" class="ajaxForm" method="POST">
                                 <textarea name="text"><?=$row["text"];?></textarea>
                                 <button type="submit">Сохранить</button>
                             </form>
@@ -47,5 +47,43 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                 <div class="bline"></div>
             </div>
         <?}?>
+    </div>
+        <div id="cabinet-note-add">
+        <div class="flex-grid">
+            <div class="content">
+                <h2>Дочерний элемент</h2>
+                    <form action="<?= base_url('cabinet/note/save') ?>" method="POST">
+                                <?= csrf_field() ?>
+                                <input type="hidden" name="parent" value="<?=$note['id'];?>">
+                                <div>
+                                    <label>Название</label>
+                                    <input type="text" name="title" placeholder="Название">
+                                </div>
+                                <div>
+                                    <label>Краткое описание</label>
+                                    <textarea name="description" placeholder="Тестовый текст"></textarea>
+                                </div>
+                                <div>
+                                    <label>Текст</label>
+                                    <textarea name="text" placeholder="Тестовый текст"></textarea>
+                                </div>
+                                <div class="status">
+                                    <label>Статус:</label>
+                                    <span>
+                                        Черновик:<input type="radio" name="status" value="draft" checked />
+                                    </span>
+                                    <span>
+                                    В написании:<input type="radio" name="status" value="pending" />
+                                    </span>
+                                    <span>
+                                    Опубликовано:<input type="radio" name="status" value="publish" />
+                                    </span>
+                                </div>
+                                <div>
+                                    <button type="submit">Добавить</button>
+                                </div>
+                        </form>
+            </div>
+        </div>
     </div>
     <?= $this->endSection(); ?>

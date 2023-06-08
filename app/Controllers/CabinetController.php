@@ -89,5 +89,6 @@ class CabinetController extends ResourceController
         $note = new Note();
         $note->save($data);
         session()->setFlashdata('success', 'Success! post updated.');
+        print_r($note);
     }
 }
