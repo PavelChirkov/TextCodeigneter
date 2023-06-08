@@ -83,12 +83,16 @@ class CabinetController extends ResourceController
         return view('cabinet/note/view',array('user' => $this->user, 'note' => $note, 'noteAll' => $noteAll));
     }
     public function noteUpdate(int $id=0){
-       
+
+        /*header('Content-Type: application/json');*/
+
         $data = $this->request->getVar();
         $data['id'] = $id;
         $note = new Note();
         $note->save($data);
-        session()->setFlashdata('success', 'Success! post updated.');
-        print_r($note);
+      
+        $note = new Note();
+        $return = $note->where('id', $id)->first();
+        return $return['text'];
     }
 }
