@@ -38,7 +38,7 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                         <div class="inner"><?=$row["text"];?></div>
                         <div class="edit-form">
                             <form action="/cabinet/note/update/<?=$row["id"];?>" class="ajaxForm" method="POST">
-                                <textarea name="text"><?=$row["text"];?></textarea>
+                                <textarea name="text" class="wsws"><?=$row["text"];?></textarea>
                                 <button type="submit">Сохранить</button>
                             </form>
                         </div>
@@ -79,7 +79,7 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                                 </div>
                                 <div>
                                     <label>Текст</label>
-                                    <textarea name="text" placeholder="Тестовый текст"></textarea>
+                                    <textarea class="wsws" name="text" placeholder="Тестовый текст"></textarea>
                                 </div>
                                 <div class="status">
                                     <label>Статус:</label>

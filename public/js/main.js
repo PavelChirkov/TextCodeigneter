@@ -79,5 +79,3 @@ function AjaxFormSendEVN(element, hideElement, showelEment) {
 }
 
 AjaxFormSendEVN('.ajaxForm', '.edit-form', '.inner');
-
-
