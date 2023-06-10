@@ -14,7 +14,7 @@ class Tagging extends Model
     protected $returnType       = 'array';
     protected $useSoftDeletes   = false;
     protected $protectFields    = true;
-    protected $allowedFields    = ['user_id', 'title', 'parent', 'text', 'status','visible','setting'];
+    protected $allowedFields    = ['user_id', 'note_id', 'title', 'parent', 'text', 'status','visible','setting'];
 
     // Dates
     protected $useTimestamps = false;

@@ -15,15 +15,15 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                     <input type="hidden" name="parent" value="">
                     <div>
                         <label>Название</label>
-                        <input type="text" name="title" value="<?=$note['title'];?>" placeholder="Название">
+                        <input type="text" name="title" value="<?= $note['title']; ?>" placeholder="Название">
                     </div>
                     <div style="display:none">
                         <label>Краткое описание</label>
-                        <textarea name="description" placeholder="Тестовый текст"><?=$note['description'];?></textarea>
+                        <textarea name="description" placeholder="Тестовый текст"><?= $note['description']; ?></textarea>
                     </div>
                     <div class="cabinet-editor">
                         <label>Текст</label>
-                        <textarea name="text" class="wsws" placeholder="Тестовый текст"><?=$note['text'];?></textarea>
+                        <textarea name="text" class="wsws" placeholder="Тестовый текст"><?= $note['text']; ?></textarea>
                     </div>
                     <div class="status">
                         <label>Статус:</label>
@@ -47,7 +47,7 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                     <div class="tabs__nav">
                         <button class="tabs__btn tabs__btn_active">Вкладка 1</button>
                         <button class="tabs__btn">Вкладка 2</button>
-                        <button class="tabs__btn">Вкладка 3</button>
+                        <button class="tabs__btn">Добавить пометку</button>
                     </div>
                     <div class="tabs__content">
                         <div class="tabs__pane tabs__pane_show">
@@ -57,7 +57,19 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                             Содержимое 2...
                         </div>
                         <div class="tabs__pane" id="content-3">
-                            Содержимое 3...
+                            <form method="POST" action="<?= base_url('cabinet/tagging/save/' . $note['id']) ?>">
+                                <div>
+                                    <label>Название</label>
+                                    <input type="text" name="title" placeholder="Название">
+                                </div>
+                                <div class="cabinet-editor">
+                                    <label>Текст</label>
+                                    <textarea name="text" placeholder="Тестовый текст"></textarea>
+                                </div>
+                                <div>
+                                    <button type="submit">Добавить</button>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>

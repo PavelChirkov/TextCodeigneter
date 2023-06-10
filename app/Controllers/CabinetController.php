@@ -5,6 +5,7 @@ namespace App\Controllers;
 
 use App\Models\User;
 use App\Models\Note; 
+use App\Models\Tagging; 
 use CodeIgniter\RESTful\ResourceController;
 
 class CabinetController extends ResourceController
@@ -103,6 +104,23 @@ class CabinetController extends ResourceController
         return  view('cabinet/note/edit',array('user' => $this->user, 'note' => $note));
 
     }
+    public function tagSave(int $id=0){
+        $id_user = $this->user["id"];
+        $tag = new Tagging();
+        $data = [
+            'title' => $this->request->getVar('title'),
+            'user_id' => $id_user,
+            'note_id' => $id,
+            'status' => "pending",
+            'parent' =>"",
+            'text'  => $this->request->getVar('text'),
+            'settings'  => ""
+        ];
+        print_r($data);
+        $tag->save($data);
+    }
+
+
 
     //////note all
     private function getNoteLimit(int $limit = 0, int $offset = 0){
