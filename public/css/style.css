@@ -323,6 +323,47 @@ main {
 .flex-child form {
   width: 100%;
 }
+.flex-child .tag {
+  border: 1px solid #ddd;
+  padding: 10px;
+  -webkit-box-shadow: -4px 1px 6px -1px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: -4px 1px 6px -1px rgba(34, 60, 80, 0.2);
+  box-shadow: -4px 1px 6px -1px rgba(34, 60, 80, 0.2);
+  margin-bottom: 20px;
+}
+.flex-child .text-tag {
+  white-space: normal;
+  font-size: 12px;
+  margin-bottom: 20px;
+  text-align: justify;
+  margin-right: 20px!important;
+}
+.flex-child .bold-tag {
+  white-space: normal;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.flex-child .content-tag {
+  height: 400px;
+  overflow-y: auto;
+  scrollbar-color: #6969dd #e0e0e0;
+  scrollbar-width: thin;
+}
+.flex-child .content-tag::-webkit-scrollbar {
+  width: 10px;
+  box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+}
+.flex-child .content-tag::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: #f9f9fd;
+}
+.flex-child .content-tag::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #888;
+  cursor: pointer;
+}
 .cabinet-editor {
   margin: 0px 8px;
 }

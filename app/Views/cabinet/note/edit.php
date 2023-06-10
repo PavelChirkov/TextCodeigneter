@@ -12,7 +12,8 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
 
                 <form action="<?= base_url('cabinet/note/save') ?>" method="POST">
                     <?= csrf_field() ?>
-                    <input type="hidden" name="parent" value="">
+                    <input type="hidden" name="parent" value="<?= $note['id']; ?>">
+                    <input type="hidden" name="action" value="edit">
                     <div>
                         <label>Название</label>
                         <input type="text" name="title" value="<?= $note['title']; ?>" placeholder="Название">
@@ -28,30 +29,38 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                     <div class="status">
                         <label>Статус:</label>
                         <span>
-                            Черновик:<input type="radio" name="status" value="draft" checked />
+                            Черновик:<input type="radio" name="status" value="draft" <?if($note["status"] == "draft"){?>checked<?}?> />
                         </span>
                         <span>
-                            В написании:<input type="radio" name="status" value="pending" />
+                            В написании:<input type="radio" name="status" value="pending" <?if($note["status"] == "pending"){?>checked<?}?>  />
                         </span>
                         <span>
-                            Опубликовано:<input type="radio" name="status" value="publish" />
+                            Опубликовано:<input type="radio" name="status" value="publish" <?if($note["status"] == "publish"){?>checked<?}?>  />
                         </span>
                     </div>
                     <div>
-                        <button type="submit">Добавить</button>
+                        <button type="submit">Изменить</button>
                     </div>
                 </form>
             </div>
             <div class="flex-child">
                 <div class="tabs">
                     <div class="tabs__nav">
-                        <button class="tabs__btn tabs__btn_active">Вкладка 1</button>
+                        <button class="tabs__btn tabs__btn_active">Пометки к данному тексту</button>
                         <button class="tabs__btn">Вкладка 2</button>
                         <button class="tabs__btn">Добавить пометку</button>
                     </div>
                     <div class="tabs__content">
                         <div class="tabs__pane tabs__pane_show">
-                            Содержимое 1...
+                            <div class="content-tag">
+                                <?
+                                foreach ($tag as $row) { ?>
+                                    <div class="tag">
+                                        <div class="bold-tag"><?=$row["title"];?></div>
+                                        <div class="text-tag"><?=$row["text"];?></div>
+                                    </div>
+                                <? } ?>
+                            </div>
                         </div>
                         <div class="tabs__pane">
                             Содержимое 2...
