@@ -1,9 +1,9 @@
 <?= $this->extend('layouts/main');
 $this->section('title') ?> Posts <?= $this->endSection() ?>
 <?= $this->section('content'); ?>   
-<div class="flex-grid">
-    <div class="content"><a href="/cabinet/note/add/">Добавить элемент</a></div>
-</div> 
+
+
+
     <div class="flex-grid action-open-close">
         <div class="name-element"><?=$note['title'];?></div>
         <div class="content">
@@ -21,9 +21,6 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
             </div>
         </div>
         <div class="button">Открыть</div>
-    </div>
-    <div class="flex-grid">
-        <div class="content"><a href="/cabinet/note/add/<?=$note['id'];?>">Добавить дочерний элемент</a></div>
     </div>
     <div id="cabinet-paper">
         <?foreach($noteAll as $row){?>
@@ -73,7 +70,7 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                                     <label>Название</label>
                                     <input type="text" name="title" placeholder="Название">
                                 </div>
-                                <div>
+                                <div class="cabinet-form-toggle" style="display:none;">
                                     <label>Краткое описание</label>
                                     <textarea name="description" placeholder="Тестовый текст"></textarea>
                                 </div>

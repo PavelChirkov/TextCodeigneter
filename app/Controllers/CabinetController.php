@@ -100,6 +100,6 @@ class CabinetController extends ResourceController
     //////note all
     private function getNoteLimit(int $limit = 0, int $offset = 0){
         $note = new Note();
-        return $note->select('id, title')->where('user_id', $this->user["id"])->findAll($limit, $offset);
+        return $note->select('id, title, status')->where('user_id', $this->user["id"])->findAll($limit, $offset);
     }
 }

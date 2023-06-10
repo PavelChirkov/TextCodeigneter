@@ -37,7 +37,8 @@ class Note extends Migration
             ],
             'description' => [
                 'type' => 'TEXT',
-                'constraint' => '600'
+                'constraint' => '600',
+                'null' => true,
             ],
             'visible' => [
                 'type'       => 'ENUM',
