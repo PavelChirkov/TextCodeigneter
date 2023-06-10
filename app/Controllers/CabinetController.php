@@ -46,7 +46,7 @@ class CabinetController extends ResourceController
 
         $inputs = $this->validate([
             'title' => 'required|min_length[5]',
-            'description' => 'required|min_length[5]',
+           // 'description' => 'required|min_length[5]',
         ]);
 
         if (!$inputs) {
