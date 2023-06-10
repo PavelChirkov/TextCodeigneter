@@ -29,9 +29,9 @@
   src: url('https://weloveiconfonts.com/api/fonts/fontawesome/fontawesome-webfont.eot?#iefix') format('eot'), url('https://weloveiconfonts.com/api/fonts/fontawesome/fontawesome-webfont.woff') format('woff'), url('https://weloveiconfonts.com/api/fonts/fontawesome/fontawesome-webfont.ttf') format('truetype'), url('https://weloveiconfonts.com/api/fonts/fontawesome/fontawesome-webfont.svg#FontAwesomeRegular') format('svg');
 }
 
-@link-color-draft: #800000; 
-@link-color-pending:  #FFA500;
-@link-color-publish:  #008000;
+@link-color-draft: #800000;
+@link-color-pending: #FFA500;
+@link-color-publish: #008000;
 
 * {
   margin: 0;
@@ -163,7 +163,8 @@ main {
 
   .text {
     padding: 10px;
-    .inner{
+
+    .inner {
       line-height: 18px;
     }
   }
@@ -190,14 +191,16 @@ main {
       opacity: .5;
       margin-right: 5px;
     }
-    .text-value{
-      float:right;
+
+    .text-value {
+      float: right;
       font-size: 12px;
       color: #000;
       opacity: .5;
     }
   }
-  .edit-text{
+
+  .edit-text {
     opacity: .5;
   }
 
@@ -215,7 +218,6 @@ main {
   text-transform: uppercase;
   border-bottom: 1px solid #ddd;
   background: #F5F5F5;
-  opacity: .2;
 }
 
 .action-open-close {
@@ -290,8 +292,8 @@ main {
       margin: 5px;
       float: right;
       position: absolute;
-      right:5px;
-      top:10px;
+      right: 5px;
+      top: 10px;
     }
   }
 
@@ -309,48 +311,59 @@ main {
 .publish {
   border-top: 2px solid @link-color-publish;
 }
-.circle_draft,.circle_pending,.circle_publish{
-  width:16px;
-  height:16px;
-  display:block;
-  float:left;
+
+.circle_draft,
+.circle_pending,
+.circle_publish {
+  width: 16px;
+  height: 16px;
+  display: block;
+  float: left;
   margin-right: 10px;
 }
-.circle_draft{
-  background:  @link-color-draft
-}
-.circle_pending{
-  background:  @link-color-pending;
-}
-.circle_publish{
-  background:  @link-color-publish;
-}
-.icon_big{
-  width:128px;
-  height:auto;
+
+.circle_draft {
+  background: @link-color-draft
 }
 
-.icon_small{
-  width:24px;
-  height:auto;
+.circle_pending {
+  background: @link-color-pending;
 }
 
-.panel{
+.circle_publish {
+  background: @link-color-publish;
+}
+
+.icon_big {
+  width: 128px;
+  height: auto;
+}
+
+.icon_small {
+  width: 24px;
+  height: auto;
+}
+
+.panel {
   border: 1px solid #ddd;
   padding: 10px;
-  h2{
-    color:#000;
+
+  h2 {
+    color: #000;
     font-size: 14px;
   }
-  .link{
-    margin-top:10px;
-    a{
-      color:#666;
+
+  .link {
+    margin-top: 10px;
+
+    a {
+      color: #666;
     }
   }
 }
-.mm10{
-  margin:10px;
+
+.mm10 {
+  margin: 10px;
 }
 
 .net_grid_1 {
@@ -360,4 +373,76 @@ main {
   grid-column-gap: 0px;
   grid-row-gap: 0px;
 }
-  
+.flex-parent {
+  display: flex;
+}
+.flex-child {
+  box-sizing: border-box;
+  width: 50%;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+  &:nth-of-type(1){
+    width: 60%;
+  }
+  &:nth-of-type(2){
+    width: 40%;
+   /* background-color: #000;*/
+  }
+  form{
+    width:100%;
+  }
+}
+.cabinet-editor{
+  margin: 0px 8px;
+}
+
+
+.tabs {
+  border: 1px solid #e0e0e0;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.tabs__nav {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  background: #fafafa;
+  margin: 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.tabs__btn {
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  flex-shrink: 0;
+  flex-grow: 1;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.tabs__btn_active {
+  background: #e0e0e0;
+  cursor: default;
+}
+
+.tabs__btn:not(.tabs__btn_active):hover,
+.tabs__btn:not(.tabs__btn_active):focus {
+  background-color: #eee;
+}
+
+.tabs__content {
+  padding: 1rem;
+}
+
+.tabs__pane {
+  display: none;
+}
+
+.tabs__pane_show {
+  display: block;
+}

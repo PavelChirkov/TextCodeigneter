@@ -73,7 +73,7 @@ class CabinetController extends ResourceController
         }
         
     }
-    public function noteView(int $id=0){
+    public function noteView(int $id = 0){
         $note = new Note();
         $note = $note->find($id); 
 
@@ -83,7 +83,7 @@ class CabinetController extends ResourceController
 
         return view('cabinet/note/view',array('user' => $this->user, 'note' => $note, 'noteAll' => $noteAll));
     }
-    public function noteUpdate(int $id=0){
+    public function noteUpdate(int $id = 0){
 
         /*header('Content-Type: application/json');*/
 
@@ -96,10 +96,17 @@ class CabinetController extends ResourceController
         $return = $note->where('id', $id)->first();
         return $return['text'];
     }
+    public function noteEditFull(int $id = 0) {
+
+        $note = new Note();
+        $note = $note->find($id); 
+        return  view('cabinet/note/edit',array('user' => $this->user, 'note' => $note));
+
+    }
 
     //////note all
     private function getNoteLimit(int $limit = 0, int $offset = 0){
         $note = new Note();
-        return $note->select('id, title, status')->where('user_id', $this->user["id"])->findAll($limit, $offset);
+        return $note->select('id, title, status')->where(['user_id' => $this->user["id"],"parent" => "0"])->findAll($limit, $offset);
     }
 }

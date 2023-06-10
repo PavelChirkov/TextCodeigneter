@@ -178,7 +178,6 @@ main {
   text-transform: uppercase;
   border-bottom: 1px solid #ddd;
   background: #F5F5F5;
-  opacity: .2;
 }
 .action-open-close {
   border-top: 1px solid #000;
@@ -303,4 +302,68 @@ main {
   /*grid-template-rows: repeat(6, 1fr);*/
   grid-column-gap: 0px;
   grid-row-gap: 0px;
+}
+.flex-parent {
+  display: flex;
+}
+.flex-child {
+  box-sizing: border-box;
+  width: 50%;
+  white-space: nowrap;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.flex-child:nth-of-type(1) {
+  width: 60%;
+}
+.flex-child:nth-of-type(2) {
+  width: 40%;
+  /* background-color: #000;*/
+}
+.flex-child form {
+  width: 100%;
+}
+.cabinet-editor {
+  margin: 0px 8px;
+}
+.tabs {
+  border: 1px solid #e0e0e0;
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.tabs__nav {
+  display: flex;
+  flex-wrap: wrap;
+  list-style-type: none;
+  background: #fafafa;
+  margin: 0;
+  border-bottom: 1px solid #e0e0e0;
+}
+.tabs__btn {
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  color: black;
+  text-align: center;
+  flex-shrink: 0;
+  flex-grow: 1;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+.tabs__btn_active {
+  background: #e0e0e0;
+  cursor: default;
+}
+.tabs__btn:not(.tabs__btn_active):hover,
+.tabs__btn:not(.tabs__btn_active):focus {
+  background-color: #eee;
+}
+.tabs__content {
+  padding: 1rem;
+}
+.tabs__pane {
+  display: none;
+}
+.tabs__pane_show {
+  display: block;
 }
