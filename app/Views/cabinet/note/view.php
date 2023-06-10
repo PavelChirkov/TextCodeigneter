@@ -45,9 +45,9 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                 <div>
 
                     <div class="panel-note">
+                        <a href="/cabinet/note/edit/<?= $row["id"]; ?>"><img style="width:16px;height:16px;" class="icon_note_param" src="/img/pencil.svg" alt="Редактировать"></a>
                         <a href="/cabinet/note/view/<?= $row["id"]; ?>"><img src="/img/eye.svg" alt="Посмотреть" style="width:16px;height:16px;" class="icon_note_param" /></a>
                         <a href="/cabinet/note/add/<?= $row['id']; ?>"><img src="/img/category.svg" alt="Дочерний элемент" style="width:16px;height:16px;" class="icon_note_param" /></a>
-                        <a href="/cabinet/note/edit/<?= $row["id"]; ?>"><img style="width:16px;height:16px;" class="icon_note_param" src="/img/pencil.svg" alt="Редактировать"></a>
                         <span class="setting">
                             <span class="status">Статус: <?= $row["status"]; ?></span>
                             <span class="visible">Видимость: <?= $row["visible"]; ?></span>
