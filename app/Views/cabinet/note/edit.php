@@ -57,6 +57,16 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                                     <button type="submit">Изменить изображение</button>
                                 </form>
                             </div>
+                            <div class="border_panel">
+                                <h3>Краткое описание:</h3>
+                                <textarea name="description" placeholder="Тестовый текст"><?= $note['description']; ?></textarea>
+                                <button type="submit">Изменить</button>
+                            </div>
+                            <div class="border_panel">
+                                <h3>Видимость:</h3>
+                                <?= $note['visible']; ?>
+                                <button type="submit">Изменить</button>
+                            </div>
                         </div>
                         <div class="tabs__pane">
                             <div class="content-tag">
