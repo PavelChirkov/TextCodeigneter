@@ -50,6 +50,13 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                     <div class="tabs__content">
                         <div class="tabs__pane tabs__pane_show">
                             <h2>Настройки: </h2>
+                            <div class="border_panel">
+                                <h3>Изображение:</h3>
+                                <form action="<?= base_url('cabinet/note/save') ?>" method="POST">
+                                    <input type="file" name="file">
+                                    <button type="submit">Изменить изображение</button>
+                                </form>
+                            </div>
                         </div>
                         <div class="tabs__pane">
                             <div class="content-tag">
