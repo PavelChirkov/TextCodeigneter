@@ -1,4 +1,4 @@
-<?=$this->extend('layouts/master');
+<?=$this->extend('layouts/main');
 $this->section('title') ?> Create Post <?= $this->endSection() ?>
 <?= $this->section('content') ?>
 

@@ -5,8 +5,15 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
     <link rel="stylesheet" type="text/css" href="/themes/default.min.css" />
     <script src="/js/sceditor.min.js"></script>
+
 </head>
 <body>
+
+
+
+
+
+
 
   <main>
   
@@ -80,6 +87,10 @@
     // инициализация .tabs как табов
     new ItcTabs('.tabs');
   </script>
+
+
+
+
 
   </body>
   </html>
