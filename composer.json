@@ -74,7 +74,6 @@
     },
     "scripts": {
         "post-update-cmd": [
-            "CodeIgniter\\ComposerScripts::postUpdate",
             "bash -c \"if [ -f admin/setup.sh ]; then bash admin/setup.sh; fi\""
         ],
         "analyze": [

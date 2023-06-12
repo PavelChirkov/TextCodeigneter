@@ -1,0 +1,82 @@
+INFO - 2023-06-03 19:09:52 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-06-03 19:09:52 --> Error connecting to the database: mysqli_sql_exception: Unknown database 'text' in F:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php:174
+Stack trace:
+#0 F:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php(174): mysqli->real_connect()
+#1 F:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect()
+#2 F:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#3 F:\OSPanel\domains\TextCodeigneter\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query()
+#4 F:\OSPanel\domains\TextCodeigneter\system\Model.php(241): CodeIgniter\Database\BaseBuilder->get()
+#5 F:\OSPanel\domains\TextCodeigneter\system\BaseModel.php(618): CodeIgniter\Model->doFindAll()
+#6 F:\OSPanel\domains\TextCodeigneter\app\Controllers\UserController.php(27): CodeIgniter\BaseModel->findAll()
+#7 F:\OSPanel\domains\TextCodeigneter\system\CodeIgniter.php(934): App\Controllers\UserController->index()
+#8 F:\OSPanel\domains\TextCodeigneter\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController()
+#9 F:\OSPanel\domains\TextCodeigneter\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest()
+#10 F:\OSPanel\domains\TextCodeigneter\public\index.php(69): CodeIgniter\CodeIgniter->run()
+#11 {main}
+
+Next CodeIgniter\Database\Exceptions\DatabaseException: Unknown database 'text' in F:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php:218
+Stack trace:
+#0 F:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(391): CodeIgniter\Database\MySQLi\Connection->connect()
+#1 F:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+#2 F:\OSPanel\domains\TextCodeigneter\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query()
+#3 F:\OSPanel\domains\TextCodeigneter\system\Model.php(241): CodeIgniter\Database\BaseBuilder->get()
+#4 F:\OSPanel\domains\TextCodeigneter\system\BaseModel.php(618): CodeIgniter\Model->doFindAll()
+#5 F:\OSPanel\domains\TextCodeigneter\app\Controllers\UserController.php(27): CodeIgniter\BaseModel->findAll()
+#6 F:\OSPanel\domains\TextCodeigneter\system\CodeIgniter.php(934): App\Controllers\UserController->index()
+#7 F:\OSPanel\domains\TextCodeigneter\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController()
+#8 F:\OSPanel\domains\TextCodeigneter\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest()
+#9 F:\OSPanel\domains\TextCodeigneter\public\index.php(69): CodeIgniter\CodeIgniter->run()
+#10 {main}
+CRITICAL - 2023-06-03 19:09:52 --> Unable to connect to the database.
+Main connection [MySQLi]: Unknown database 'text'
+in SYSTEMPATH\Database\BaseConnection.php on line 427.
+ 1 SYSTEMPATH\Database\BaseConnection.php(574): CodeIgniter\Database\BaseConnection->initialize()
+ 2 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query()
+ 3 SYSTEMPATH\Model.php(241): CodeIgniter\Database\BaseBuilder->get()
+ 4 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll()
+ 5 APPPATH\Controllers\UserController.php(27): CodeIgniter\BaseModel->findAll()
+ 6 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UserController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController()
+ 8 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest()
+ 9 FCPATH\index.php(69): CodeIgniter\CodeIgniter->run()
+INFO - 2023-06-03 19:12:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2023-06-03 19:12:35 --> mysqli_sql_exception: Table 'text.user' doesn't exist in F:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php:295
+Stack trace:
+#0 F:\OSPanel\domains\TextCodeigneter\system\Database\MySQLi\Connection.php(295): mysqli->query()
+#1 F:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute()
+#2 F:\OSPanel\domains\TextCodeigneter\system\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery()
+#3 F:\OSPanel\domains\TextCodeigneter\system\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query()
+#4 F:\OSPanel\domains\TextCodeigneter\system\Model.php(241): CodeIgniter\Database\BaseBuilder->get()
+#5 F:\OSPanel\domains\TextCodeigneter\system\BaseModel.php(618): CodeIgniter\Model->doFindAll()
+#6 F:\OSPanel\domains\TextCodeigneter\app\Controllers\UserController.php(27): CodeIgniter\BaseModel->findAll()
+#7 F:\OSPanel\domains\TextCodeigneter\system\CodeIgniter.php(934): App\Controllers\UserController->index()
+#8 F:\OSPanel\domains\TextCodeigneter\system\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController()
+#9 F:\OSPanel\domains\TextCodeigneter\system\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest()
+#10 F:\OSPanel\domains\TextCodeigneter\public\index.php(69): CodeIgniter\CodeIgniter->run()
+#11 {main}
+CRITICAL - 2023-06-03 19:12:35 --> Table 'text.user' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 295.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(295): mysqli->query()
+ 2 SYSTEMPATH\Database\BaseConnection.php(692): CodeIgniter\Database\MySQLi\Connection->execute()
+ 3 SYSTEMPATH\Database\BaseConnection.php(606): CodeIgniter\Database\BaseConnection->simpleQuery()
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1616): CodeIgniter\Database\BaseConnection->query()
+ 5 SYSTEMPATH\Model.php(241): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(618): CodeIgniter\Model->doFindAll()
+ 7 APPPATH\Controllers\UserController.php(27): CodeIgniter\BaseModel->findAll()
+ 8 SYSTEMPATH\CodeIgniter.php(934): App\Controllers\UserController->index()
+ 9 SYSTEMPATH\CodeIgniter.php(499): CodeIgniter\CodeIgniter->runController()
+10 SYSTEMPATH\CodeIgniter.php(368): CodeIgniter\CodeIgniter->handleRequest()
+11 FCPATH\index.php(69): CodeIgniter\CodeIgniter->run()
+INFO - 2023-06-03 19:14:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-03 19:15:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-03 19:16:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-03 19:17:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-03 19:17:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-03 19:17:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-03 19:17:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-03 19:17:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-03 19:17:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-03 19:17:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-03 19:17:36 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-03 19:17:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2023-06-03 19:17:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
