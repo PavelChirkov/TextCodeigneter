@@ -1,55 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <title>Vis Network | Basic usage</title>
 
-    <script
-      type="text/javascript"
-      src="/js/vis.js"
-    ></script>
+    <script type="text/javascript" src="/js/vis.js"></script>
 
     <style type="text/css">
-      #mynetwork {
-        width: 600px;
-        height: 400px;
-        border: 1px solid lightgray;
-      }
+        #mynetwork {
+            width: 600px;
+            height: 400px;
+            border: 1px solid lightgray;
+        }
     </style>
-  </head>
-  <body>
-    <p>Create a simple network with some nodes and edges.</p>
+</head>
+
+<body>
+    <?/*<p>Create a simple network with some nodes and edges.</p>
+    <? foreach ($map as $key => $row) { ?>
+        { id: <?= $row['id']; ?>, label:"<?= $row['title'] ?>"},
+        <? foreach ($row['desc'] as $key => $row) { ?>
+            { id: <?= $row['id']; ?>, label:"<?= $row['title'] ?>"},
+            <? foreach ($row['desc'] as $key => $row) { ?>
+                { id: <?= $row['id']; ?>, label:"<?= $row['title'] ?>"},
+            <? } ?>
+        <? } ?>
+    <? } ?>
+
+    <? foreach ($map as $key => $row) { ?>
+        <? foreach ($row['desc'] as $key => $row1) { ?>
+            {from: <?= $row['id']; ?>, to:<?= $row1['id'] ?>},
+            <? foreach ($row1['desc'] as $key => $row2) { ?>
+                {from: <?= $row1['id']; ?>, to:<?= $row2['id'] ?>},
+            <? } ?>
+        <? } ?>
+    <? } ?>*/?>
 
     <div id="mynetwork"></div>
 
     <script type="text/javascript">
-      // create an array with nodes
-      var nodes = new vis.DataSet([
-        { id: 1, label: "Node 1" },
-        { id: 2, label: "Node 2" },
-        { id: 3, label: "Node 3" },
-        { id: 4, label: "Node 4" },
-        { id: 5, label: "Node 5" },
-        { id: 6, label: "Node 6" },
-      ]);
+        // create an array with nodes
 
-      // create an array with edges
-      var edges = new vis.DataSet([
-        { from: 1, to: 3 },
-        { from: 1, to: 2 },
-        { from: 2, to: 4 },
-        { from: 2, to: 5 },
-        { from: 3, to: 3 },
-        { from: 6, to: 1 },
-      ]);
+        var nodes = new vis.DataSet([
+            <? foreach ($map as $key => $row) { ?> {
+                    id: <?= $row['id']; ?>,
+                    label: "<?= $row['title'] ?>"
+                },
+                <? foreach ($row['desc'] as $key => $row) { ?> {
+                        id: <?= $row['id']; ?>,
+                        label: "<?= $row['title'] ?>"
+                    },
+                    <? foreach ($row['desc'] as $key => $row) { ?> {
+                            id: <?= $row['id']; ?>,
+                            label: "<?= $row['title'] ?>"
+                        },
+                    <? } ?>
+                <? } ?>
+            <? } ?>
+        ]);
 
-      // create a network
-      var container = document.getElementById("mynetwork");
-      var data = {
-        nodes: nodes,
-        edges: edges,
-      };
-      var options = {};
-      var network = new vis.Network(container, data, options);
+        // create an array with edges
+        var edges = new vis.DataSet([
+            <? foreach ($map as $key => $row) { ?>
+                <? foreach ($row['desc'] as $key => $row1) { ?> { from: <?= $row['id']; ?>, to: <?= $row1['id'] ?> },
+                    <? foreach ($row1['desc'] as $key => $row2) { ?> { from: <?= $row1['id']; ?>, to: <?= $row2['id'] ?> },
+                    <? } ?>
+                <? } ?>
+            <? } ?>
+        ]);
+
+        // create a network
+        var container = document.getElementById("mynetwork");
+        var data = {
+            nodes: nodes,
+            edges: edges,
+        };
+        var options = {};
+        var network = new vis.Network(container, data, options);
     </script>
-  </body>
+</body>
+
 </html>

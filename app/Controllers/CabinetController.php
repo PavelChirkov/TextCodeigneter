@@ -145,8 +145,22 @@ class CabinetController extends ResourceController
     }
 
     public function mapNote(int $id){
-        
-        return view('cabinet/note/map', array());
+        ///пока 3 уровня вложенности
+        $map = [];
+        $n = $this->getNodeId($id); 
+        $map[$n['id']] = $n;
+        $id = $n['id'];
+        $p = $this->getNodesParent($id);
+        foreach($p as $row){
+            $map[$n['id']]['desc'][$row['id']]['id'] = $row['id'];
+            $map[$n['id']]['desc'][$row['id']]['title'] = $row["title"];
+            $p2 = $this->getNodesParent($row['id']);
+            $map[$n['id']]['desc'][$row['id']]['desc'] = $p2;
+        }
+        print "<pre>";
+        print_r($map);
+        print "</pre>";
+        return view('cabinet/note/map', array('map' => $map ));
     }
 
 
@@ -155,5 +169,15 @@ class CabinetController extends ResourceController
     {
         $note = new Note();
         return $note->select('id, title, status')->where(['user_id' => $this->user["id"], "parent" => "0"])->findAll($limit, $offset);
+    }
+    private function getNodeId(int $id = 0)
+    {
+        $note = new Note();
+        return $note->select('id, title')->where(['user_id' => $this->user["id"], "id" => $id])->first();
+    }
+    private function getNodesParent(int $id = 0)
+    {
+        $note = new Note();
+        return $note->select('id, title')->where(['user_id' => $this->user["id"], "parent" => $id])->findAll();
     }
 }
