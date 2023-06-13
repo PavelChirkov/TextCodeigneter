@@ -29,14 +29,15 @@ class LoginController extends ResourceController
 
     public function log_on()
     {
+        //print_r($_POST);
         $login = $this->request->getVar('login');
 
         $password = md5($this->request->getVar('password'));
 
         $tUser = $this->user->where('login', $login)->first();
         
-       /* print_r($tUser);
-        print_r($password);*/
+        print_r($tUser);
+        print_r($password);
 
         if ($password == $tUser['password']){
              

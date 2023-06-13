@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Программа для  писателей | <?= $this->renderSection('title') ?></title>
-	<link rel="stylesheet" type="text/css" href="/css/main.css" />
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
-    crossorigin="anonymous">
+    <title>Программа для писателей | <?= $this->renderSection('title') ?></title>
+    <link rel="stylesheet" type="text/css" href="/css/main.css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 </head>
+
 <body>
 
-    <?/*<?= $this->renderSection('content') */?>
+    <?/*<?= $this->renderSection('content') */ ?>
 
 
-<div class="container" id="container">
+    <div class="container" id="container">
         <div class="form-container sign-up-container">
             <form action="#">
                 <h1>Create Account</h1>
@@ -33,18 +33,19 @@
             </form>
         </div>
         <div class="form-container sign-in-container">
-            <form action="#">
-                <h1>Sign in</h1>
-                <div class="social-container">
+            <form method="POST" action="/login/on">
+                <?= csrf_field() ?>
+                <h1>Вход на сайт</h1>
+                <?/*<div class="social-container">
                     <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
                     <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-                <span>or use your account</span>
-                <input type="email" placeholder="Email" />
-                <input type="password" placeholder="Password" />
-                <a href="#">Forgot your password?</a>
-                <button>Sign In</button>
+                </div>*/ ?>
+                <span style="margin-top:10px;">используйте данные от своего аккаунта</span>
+                <input type="login" name="login" placeholder="Ваш логин" />
+                <input type="password" name="password" placeholder="Пароль" />
+                <?/*<a href="#">Forgot your password?</a>*/ ?>
+                <button style="cursor:pointer" type="submit">Вход</button>
             </form>
         </div>
         <div class="overlay-container">
@@ -63,16 +64,17 @@
         </div>
     </div>
 
-<div class="footer">
-<b>	Follow me on </b>
-	<div class="icons">
-		<a href="https://github.com/kvaibhav01" target="_blank" class="social"><i class="fab fa-github"></i></a>
-		<a href="https://www.instagram.com/vaibhavkhulbe143/" target="_blank" class="social"><i class="fab fa-instagram"></i></a>
-		<a href="https://medium.com/@vaibhavkhulbe" target="_blank" class="social"><i class="fab fa-medium"></i></a>
-		<a href="https://twitter.com/vaibhav_khulbe" target="_blank" class="social"><i class="fab fa-twitter-square"></i></a>
-		<a href="https://linkedin.com/in/vaibhav-khulbe/" target="_blank" class="social"><i class="fab fa-linkedin"></i></a>
-		</div>
-	</div>
-<script  src="/js/login.js"></script> 
+    <div class="footer">
+        <b> Follow me on </b>
+        <div class="icons">
+            <a href="https://github.com/kvaibhav01" target="_blank" class="social"><i class="fab fa-github"></i></a>
+            <a href="https://www.instagram.com/vaibhavkhulbe143/" target="_blank" class="social"><i class="fab fa-instagram"></i></a>
+            <a href="https://medium.com/@vaibhavkhulbe" target="_blank" class="social"><i class="fab fa-medium"></i></a>
+            <a href="https://twitter.com/vaibhav_khulbe" target="_blank" class="social"><i class="fab fa-twitter-square"></i></a>
+            <a href="https://linkedin.com/in/vaibhav-khulbe/" target="_blank" class="social"><i class="fab fa-linkedin"></i></a>
+        </div>
+    </div>
+    <script src="/js/login.js"></script>
 </body>
+
 </html>
