@@ -144,6 +144,10 @@ class CabinetController extends ResourceController
         return redirect()->to('/cabinet/note/edit/' . $id);
     }
 
+    public function mapNote(int $id){
+        
+        return view('cabinet/note/map', array());
+    }
 
 
     //////note all

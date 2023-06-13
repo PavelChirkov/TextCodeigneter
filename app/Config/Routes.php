@@ -64,6 +64,7 @@ $routes->get('cabinet/note/view/(:num)', 'CabinetController::noteView/$1');
 $routes->post('cabinet/note/update/(:num)', 'CabinetController::noteUpdate/$1');
 $routes->get('cabinet/note/edit/(:num)', 'CabinetController::noteEditFull/$1');
 $routes->post('cabinet/tagging/save/(:num)', 'CabinetController::tagSave/$1');
+$routes->get('cabinet/note/map/(:num)', 'CabinetController::mapNote/$1');
 /*
  * --------------------------------------------------------------------
  * Additional Routing
