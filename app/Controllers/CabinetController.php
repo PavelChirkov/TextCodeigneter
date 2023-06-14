@@ -6,6 +6,7 @@ namespace App\Controllers;
 use App\Models\User;
 use App\Models\Note;
 use App\Models\Tagging;
+use App\Models\Image;
 use CodeIgniter\RESTful\ResourceController;
 
 class CabinetController extends ResourceController
@@ -161,6 +162,31 @@ class CabinetController extends ResourceController
         print_r($map);
         print "</pre>";*/
         return view('cabinet/note/map', array('map' => $map ));
+    }
+    public function imageNote(int $id){
+        $nf = 'upload/'.$id;
+        if(!is_dir($nf )){
+            mkdir('upload/'.$id, 0644);
+        }
+        $uploaddir = $nf.'/';
+        $uploadfile = $uploaddir . basename($_FILES['file']['name']);
+
+       
+        if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
+            $id_user = $this->user["id"];
+            $image = new Image();
+            $data = [
+                'title' => $_FILES['file']['name'],
+                'user_id' => $id_user,
+                'note_id' => $id,
+                'status' => "pending",
+                'name'  => $_FILES['file']['name'],
+            ];
+            $image->save($data);
+        } 
+        return redirect()->to('/cabinet/note/edit/' . $id);
+
+
     }
 
 

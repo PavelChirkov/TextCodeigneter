@@ -52,7 +52,7 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                             <h2>Настройки: </h2>
                             <div class="border_panel">
                                 <h3>Изображение:</h3>
-                                <form action="<?= base_url('cabinet/note/save') ?>" method="POST">
+                                <form enctype="multipart/form-data" action="<?= base_url('cabinet/note/loadimage/'.$note['id']);?>" method="POST">
                                     <input type="file" name="file">
                                     <button type="submit">Изменить изображение</button>
                                 </form>
