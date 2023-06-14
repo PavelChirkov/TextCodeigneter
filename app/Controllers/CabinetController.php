@@ -157,9 +157,9 @@ class CabinetController extends ResourceController
             $p2 = $this->getNodesParent($row['id']);
             $map[$n['id']]['desc'][$row['id']]['desc'] = $p2;
         }
-        print "<pre>";
+        /*print "<pre>";
         print_r($map);
-        print "</pre>";
+        print "</pre>";*/
         return view('cabinet/note/map', array('map' => $map ));
     }
 
