@@ -124,7 +124,10 @@ class CabinetController extends ResourceController
         $tag = new Tagging();
         $tag = $tag->where(['user_id' => $this->user["id"], "note_id" => $id])->findAll();
 
-        return  view('cabinet/note/edit', array('user' => $this->user, 'note' => $note, 'tag' => $tag));
+        $image = new Image();
+        $image = $image->where(['user_id' => $this->user["id"], "note_id" => $id])->first();
+
+        return  view('cabinet/note/edit', array('user' => $this->user, 'note' => $note, 'tag' => $tag, 'image' => $image));
     }
     public function tagSave(int $id = 0)
     {
@@ -145,14 +148,15 @@ class CabinetController extends ResourceController
         return redirect()->to('/cabinet/note/edit/' . $id);
     }
 
-    public function mapNote(int $id){
+    public function mapNote(int $id)
+    {
         ///пока 3 уровня вложенности
         $map = [];
-        $n = $this->getNodeId($id); 
+        $n = $this->getNodeId($id);
         $map[$n['id']] = $n;
         $id = $n['id'];
         $p = $this->getNodesParent($id);
-        foreach($p as $row){
+        foreach ($p as $row) {
             $map[$n['id']]['desc'][$row['id']]['id'] = $row['id'];
             $map[$n['id']]['desc'][$row['id']]['title'] = $row["title"];
             $p2 = $this->getNodesParent($row['id']);
@@ -161,35 +165,72 @@ class CabinetController extends ResourceController
         /*print "<pre>";
         print_r($map);
         print "</pre>";*/
-        return view('cabinet/note/map', array('map' => $map ));
+        return view('cabinet/note/map', array('map' => $map));
     }
-    public function imageNote(int $id){
-        $nf = 'upload/'.$id;
-        if(!is_dir($nf )){
-            mkdir('upload/'.$id, 0644);
+    public function imageNote(int $id)
+    {
+        $image = $this->gIN($id);
+
+        if(isset($image["id"])){
+            $this->deleteFileImage($image["id"]);
+            $this->loadImage($id);
+        }else{
+            $this->loadImage($id);
         }
-        $uploaddir = $nf.'/';
-        $uploadfile = $uploaddir . basename($_FILES['file']['name']);
-
-       
-        if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
-            $id_user = $this->user["id"];
-            $image = new Image();
-            $data = [
-                'title' => $_FILES['file']['name'],
-                'user_id' => $id_user,
-                'note_id' => $id,
-                'status' => "pending",
-                'name'  => $_FILES['file']['name'],
-            ];
-            $image->save($data);
-        } 
         return redirect()->to('/cabinet/note/edit/' . $id);
-
-
+    }
+    public function imageDelete(int $id)
+    {
+        $image = $this->gI($id);
+        $this->deleteFileImage($id);
+        return redirect()->to('/cabinet/note/edit/' . $image['note_id'] );
     }
 
+    private function gI(int $id){
+        $image = new Image();
+        return  $image->where(['user_id' => $this->user["id"], "id" => $id])->first();
+    }
+    private function gIN(int $id){
+        $image = new Image();
+        return  $image->where(['user_id' => $this->user["id"], "note_id" => $id])->first();
+    }
+    
+    private function deleteFileImage(int $id){
+        $image = $this->gI($id);
+        unlink('./upload/' .  $image['note_id'] . '/' . $image['name']);
+        $image = new Image();
+        $image = $image->where(['id' => $id, 'user_id' => $this->user["id"]])->delete();
+    }
 
+    private function loadImage(int $id){
+        if ($_FILES['file']['type'] == "image/jpeg") {
+            
+            $endFile = ".jpg";
+            $namefile = md5(date("Y-m-d H:i:s"));
+            $nf = 'upload/' . $id;
+
+            if (!is_dir($nf)) {
+                mkdir('upload/' . $id, 0644);
+            }
+
+            $uploaddir = $nf . '/';
+
+            $uploadfile = $uploaddir . $namefile . $endFile;
+
+            if (move_uploaded_file($_FILES['file']['tmp_name'], $uploadfile)) {
+                $id_user = $this->user["id"];
+                $image = new Image();
+                $data = [
+                    'title' => $_FILES['file']['name'],
+                    'user_id' => $id_user,
+                    'note_id' => $id,
+                    'status' => "pending",
+                    'name'  => $namefile . $endFile,
+                ];
+                $image->save($data);
+            }
+        }
+    }
     //////note all
     private function getNoteLimit(int $limit = 0, int $offset = 0)
     {

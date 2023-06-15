@@ -52,6 +52,10 @@ $this->section('title') ?> Posts <?= $this->endSection() ?>
                             <h2>Настройки: </h2>
                             <div class="border_panel">
                                 <h3>Изображение:</h3>
+                                <?if(!empty($image)){?>
+                                    <img style="width:100%;height:100%; max-width:350px;" src="/upload/<?=$note['id'];?>/<?=$image["name"];?>" alt="<?=$image["title"]; ?>">
+                                    <div><a href="<?= base_url('cabinet/note/deleteimage/') ?>/<?=$image["id"];?>">Удалить изображение</a></div>
+                                <?}?>
                                 <form enctype="multipart/form-data" action="<?= base_url('cabinet/note/loadimage/'.$note['id']);?>" method="POST">
                                     <input type="file" name="file">
                                     <button type="submit">Изменить изображение</button>
