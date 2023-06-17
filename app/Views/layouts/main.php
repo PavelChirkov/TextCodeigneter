@@ -1,39 +1,44 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-    <title>Программа для  писателей | <?= $this->renderSection('title') ?></title> 
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
-    <link rel="stylesheet" type="text/css" href="/themes/default.min.css" />
-    <script src="/js/sceditor.min.js"></script>
+  <title>Программа для писателей | <?= $this->renderSection('title') ?></title>
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <link rel="stylesheet" type="text/css" href="/themes/default.min.css" />
+  <script src="/js/sceditor.min.js"></script>
 
 </head>
+
 <body>
-
-
-
-
-
-
+  <header>
+    <nav>
+      <ul class="menu-main">
+         <li><a href="" class="current">Рукописи</a></li>
+         <li><a href="">Настройки пользователя</a></li>
+         <li><a href="">Blog</a></li>
+         <li><a href="">Выход</a></li>
+      </ul>
+  </header>
 
   <main>
-  
+
     <h1><?= $this->renderSection('title') ?></h1>
-  
-    <?=$this->renderSection('content') ?>
-  
+
+    <?= $this->renderSection('content') ?>
+
   </main>
-  
+
   <script>
-  var textareas = document.querySelectorAll('.wsws'); 
-  for (const textarea of textareas) {
+    var textareas = document.querySelectorAll('.wsws');
+    for (const textarea of textareas) {
       sceditor.create(textarea, {
-          format: 'xhtml',
-          toolbar: 'bold,italic,underline|left,center,right,justify|font,size,color|source',
-          style: '/themes/content/default.min.css',
-          width: '100%'
+        format: 'xhtml',
+        toolbar: 'bold,italic,underline|left,center,right,justify|font,size,color|source',
+        style: '/themes/content/default.min.css',
+        width: '100%'
       });
-  }
-		</script>
+    }
+  </script>
   <script src="/js/main.js"></script>
   <script>
     class ItcTabs {
@@ -92,5 +97,6 @@
 
 
 
-  </body>
-  </html>
+</body>
+
+</html>
