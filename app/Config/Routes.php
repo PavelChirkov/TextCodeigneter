@@ -67,6 +67,10 @@ $routes->post('cabinet/tagging/save/(:num)', 'CabinetController::tagSave/$1');
 $routes->get('cabinet/note/map/(:num)', 'CabinetController::mapNote/$1');
 $routes->post('cabinet/note/loadimage/(:num)', 'CabinetController::imageNote/$1');
 $routes->get('cabinet/note/deleteimage/(:num)', 'CabinetController::imageDelete/$1'); 
+
+/**user*/
+$routes->get('cabinet/user', 'CabinetController::userProfile');
+$routes->post('cabinet/user/update', 'CabinetController::userProfileUpdate');
 /*
  * --------------------------------------------------------------------
  * Additional Routing

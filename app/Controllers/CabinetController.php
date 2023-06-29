@@ -185,6 +185,24 @@ class CabinetController extends ResourceController
         $this->deleteFileImage($id);
         return redirect()->to('/cabinet/note/edit/' . $image['note_id'] );
     }
+    
+    public function userProfile(){
+       
+        $message = session()->getFlashdata('message');
+        return view('cabinet/user/profile', array('user' => $this->user,'message'=>$message));
+    }
+    public function userProfileUpdate(){
+
+        $user_id = $this->user["id"];
+        $user = new User();
+        $data = [
+            'login' => $this->request->getVar('login'),
+            'description'  => $this->request->getVar('description')
+        ];
+        $user->update($user_id, $data);
+        session()->setFlashdata('message', 'Данные пользователя были изменены');
+        return redirect()->to('/cabinet/user/');
+    }
 
     private function gI(int $id){
         $image = new Image();
@@ -231,6 +249,9 @@ class CabinetController extends ResourceController
             }
         }
     }
+
+
+
     //////note all
     private function getNoteLimit(int $limit = 0, int $offset = 0)
     {

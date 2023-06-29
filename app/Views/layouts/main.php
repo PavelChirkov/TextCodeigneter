@@ -13,8 +13,8 @@
   <header>
     <nav>
       <ul class="menu-main">
-         <li><a href="" class="current">Рукописи</a></li>
-         <li><a href="">Настройки пользователя</a></li>
+         <li><a href="/cabinet" class="current">Рукописи</a></li>
+         <li><a href="/cabinet/user">Настройки пользователя</a></li>
          <li><a href="">Blog</a></li>
          <li><a href="">Выход</a></li>
       </ul>
