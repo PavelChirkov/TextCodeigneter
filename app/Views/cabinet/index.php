@@ -16,6 +16,7 @@ $this->section('title') ?> Posts
                 </h2>
                 <div class="link"><a href="/cabinet/note/view/<?= $row['id']; ?>">Подробнее</a></div>
                 <?//=$row["status"]; ?>
+                <p><a href="/cabinet/map_node/<?= $row['id']; ?>">карта рукописи</a></p>
             </div>
         </div>
     <? $i++;

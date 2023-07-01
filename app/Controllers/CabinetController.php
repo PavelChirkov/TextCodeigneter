@@ -155,17 +155,9 @@ class CabinetController extends ResourceController
         $n = $this->getNodeId($id);
         $map[$n['id']] = $n;
         $id = $n['id'];
-        $p = $this->getNodesParent($id);
-        foreach ($p as $row) {
-            $map[$n['id']]['desc'][$row['id']]['id'] = $row['id'];
-            $map[$n['id']]['desc'][$row['id']]['title'] = $row["title"];
-            $p2 = $this->getNodesParent($row['id']);
-            $map[$n['id']]['desc'][$row['id']]['desc'] = $p2;
-        }
-        /*print "<pre>";
-        print_r($map);
-        print "</pre>";*/
-        return view('cabinet/note/map', array('map' => $map));
+        $t = '';
+        $map = $this->ShowTree($id,1); 
+        return view('cabinet/map/all', array('n' => $n,'map' => $map));
     }
     public function imageNote(int $id)
     {
@@ -268,4 +260,40 @@ class CabinetController extends ResourceController
         $note = new Note();
         return $note->select('id, title')->where(['user_id' => $this->user["id"], "parent" => $id])->findAll();
     }
+
+    private function ShowTree(int $ParentID,int $parent) { 
+
+        $db = \Config\Database::connect();
+        $sSQL ="SELECT * FROM note WHERE parent = ".$ParentID." ";
+        $query = $db->query($sSQL);
+        $return = "";
+
+        $parent = (int) $parent;
+
+
+        if($query->getResult()){
+           
+            $return .= '<ul';
+            
+            if($parent == 1) $return .=' class="treeCSS" '; 
+            
+            $parent++;
+
+            $return .= '>';
+                foreach($query->getResult('array') as $row){
+                    $id = $row['id']; 
+                    $return .= '<li>';
+                    $return .= '<div class="textBold"><a herf="#">'.$row['title'].'</a></div>';
+                    $return .= '<div class="description">'.$row['description'].'</div>';
+                    $return .= $this->ShowTree($id, $parent);
+                    $return .= '</li>';
+                }
+            $return .= '</ul>';
+ 
+        }
+       
+        return $return;
+    }
+        
+        //ShowTree(0, 0); 
 }
