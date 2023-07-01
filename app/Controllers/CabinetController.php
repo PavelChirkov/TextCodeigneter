@@ -284,7 +284,7 @@ class CabinetController extends ResourceController
                     $id = $row['id']; 
                     $return .= '<li>';
                     $return .= '<div class="textBold"><a herf="#">'.$row['title'].'</a></div>';
-                    $return .= '<div class="description">'.$row['description'].'</div>';
+                    $return .= '<div class="description">'.$row['description'].'<div class="panel"><a href="" title="Добавить дочерний текст" alt="Добавить дочерний текст" ><img src="/img/plus.svg" style="width:18px;height:18px;" /></a></div></div>';
                     $return .= $this->ShowTree($id, $parent);
                     $return .= '</li>';
                 }

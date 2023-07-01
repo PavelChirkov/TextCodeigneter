@@ -37,8 +37,19 @@
     background-color: #F5FFFA;
     padding: 10px;
     border:1px solid #708090;
-    opacity:0.6;
     margin-top: 10px;
+    max-width:100px;
+    height:100px;
+    overflow: hidden;
+    position:relative;
+}
+.treeCSS .description .panel{
+  position: absolute;
+  bottom:0px;
+  left:0px;
+  width:100%;
+  height:20px;
+  background-color: #ededed;
 }
 .treeCSS .textBold{
     font-weight: bold;
